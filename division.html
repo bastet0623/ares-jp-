@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ARES OKAYAMAの部門別メンバー紹介ページです。" />
+  <title>Division Members | ARES OKAYAMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-background" aria-hidden="true">
+    <video class="site-background-video" autoplay muted loop playsinline preload="metadata">
+      <source src="ARES_WE_WANT_YOU_FHD-2-hq.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-tube" id="cursorTube" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">
+        <img class="logo-mark" src="team-logo.png" alt="" />
+        <span class="logo-text">ARES OKAYAMA</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about"><span>About</span><small>チーム概要</small></a></li>
+        <li><a href="index.html#divisions"><span>Fortnite</span><small>競技部門</small></a></li>
+        <li><a href="index.html#contact" class="nav-cta"><span>Contact</span><small>お問い合わせ</small></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="division-page-hero">
+      <div class="container division-page-hero-inner">
+        <a class="back-link" href="index.html#divisions">← Fortnite Teamへ戻る</a>
+        <span class="section-label" id="divisionLabel">Division<small>部門</small></span>
+        <h1 class="division-page-title" id="divisionTitle">ARES OKAYAMA</h1>
+        <p class="division-page-desc" id="divisionDesc">部門別のメンバー紹介ページです。</p>
+      </div>
+    </section>
+
+    <section class="section division-members">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Member Profile<small>メンバー紹介</small></span>
+          <h2 class="section-title" id="memberSectionTitle">Members<small>所属メンバー</small></h2>
+        </div>
+        <div class="member-profile-grid" id="memberProfileGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo logo--footer">
+        <img class="logo-mark" src="team-logo.png" alt="" />
+        <span class="logo-text">ARES OKAYAMA</span>
+      </a>
+      <p class="copyright">&copy; 2026 ARES OKAYAMA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="division.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ARES OKAYAMA公式サイト。岡山から全国へ挑むeスポーツチームとアパレルブランドFLDのニュース、部門、試合予定をお届けします。" />
+  <title>ARES OKAYAMA | Esports Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-background" aria-hidden="true">
+    <video class="site-background-video" autoplay muted loop playsinline preload="metadata">
+      <source src="ARES_WE_WANT_YOU_FHD-2-hq.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-tube" id="cursorTube" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="logo">
+        <img class="logo-mark" src="team-logo.png" alt="" />
+        <span class="logo-text">ARES OKAYAMA</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about"><span>About</span><small>チーム概要</small></a></li>
+        <li><a href="#divisions"><span>Fortnite</span><small>競技部門</small></a></li>
+        <li><a href="#character"><span>Character</span><small>キャラクター</small></a></li>
+        <li><a href="#fld"><span>FLD</span><small>アパレル</small></a></li>
+        <li><a href="#news"><span>News</span><small>お知らせ</small></a></li>
+        <li><a href="#schedule"><span>Schedule</span><small>予定</small></a></li>
+        <li><a href="#contact" class="nav-cta"><span>Contact</span><small>お問い合わせ</small></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow--1"></div>
+        <div class="hero-glow hero-glow--2"></div>
+      </div>
+      <div class="container hero-content">
+        <img class="hero-logo" src="team-logo.png" alt="ARES OKAYAMA チームロゴ" />
+        <p class="hero-tag">OKAYAMA ESPORTS CLUB · EST. 2024<small>岡山発 eスポーツクラブ</small></p>
+        <h1 class="hero-title">
+          <span class="hero-title-line">RISE FROM</span>
+          <span class="hero-title-line hero-title-line--accent">OKAYAMA.</span>
+        </h1>
+        <p class="hero-title-ja">岡山から立ち上がる。</p>
+        <p class="hero-desc">
+          ARES OKAYAMAは、岡山を拠点に活動するeスポーツチーム。<br />
+          競技、育成、地域コミュニティ、そしてアパレルブランドFLDを通じて、
+          岡山から新しいカルチャーを発信します。
+        </p>
+        <div class="hero-actions">
+          <a href="#schedule" class="btn btn-primary"><span>Next Match</span><small>次の試合</small></a>
+          <a href="#divisions" class="btn btn-ghost"><span>Fortnite Team</span><small>フォートナイト部門</small></a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value" data-count="1">0</span>
+            <span class="stat-label">Game Title<small>競技タイトル</small></span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" data-count="6">0</span>
+            <span class="stat-label">Members<small>メンバー</small></span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" data-count="12">0</span>
+            <span class="stat-label">Events<small>イベント</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll<small>スクロール</small></span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>ARES OKAYAMA<small>アレス岡山</small></span>
+        <span>FLD APPAREL<small>FLDアパレル</small></span>
+        <span>RISE FROM OKAYAMA<small>岡山から立ち上がる</small></span>
+        <span>COMPETE WITH PRIDE<small>誇りを持って戦う</small></span>
+        <span>ARES OKAYAMA<small>アレス岡山</small></span>
+        <span>FLD APPAREL<small>FLDアパレル</small></span>
+        <span>RISE FROM OKAYAMA<small>岡山から立ち上がる</small></span>
+        <span>COMPETE WITH PRIDE<small>誇りを持って戦う</small></span>
+      </div>
+    </div>
+
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">01 — About<small>チーム概要</small></span>
+          <h2 class="section-title">岡山から、勝利の熱を。</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              ARES OKAYAMAは、岡山に根ざした競技志向のeスポーツチームです。
+              フォートナイトを中心に、オンライン大会から地域イベントまで幅広く活動しています。
+            </p>
+            <p>
+              私たちは勝利を目指すだけでなく、選手の育成、配信活動、地元企業や学校との連携を通じて、
+              岡山のeスポーツシーンを盛り上げることを目指しています。
+            </p>
+            <ul class="about-values">
+              <li>
+                <strong>Compete<small>競う</small></strong>
+                <span>試合で勝つための練習、分析、改善を積み重ねる</span>
+              </li>
+              <li>
+                <strong>Local Pride<small>岡山への誇り</small></strong>
+                <span>岡山を背負い、地域と一緒に成長する</span>
+              </li>
+              <li>
+                <strong>Community<small>コミュニティ</small></strong>
+                <span>ファン、選手、パートナーが集まる場をつくる</span>
+              </li>
+            </ul>
+          </div>
+          <div class="about-visual">
+            <div class="about-card">
+              <div class="about-card-inner">
+                <span class="about-card-tag">Home Base<small>活動拠点</small></span>
+                <h3>OKAYAMA</h3>
+                <p>Kurashiki Bikan Historical Quarter<small>倉敷美観地区</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section divisions" id="divisions">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">02 — Fortnite<small>フォートナイト</small></span>
+          <h2 class="section-title">Fortnite Team<small>フォートナイト部門</small></h2>
+        </div>
+        <div class="divisions-grid">
+          <article class="player-card player-card--featured division-card" role="link" tabindex="0" data-division="representative">
+            <div class="player-avatar">R</div>
+            <div class="player-info">
+              <h3>REPRESENTATIVE<small>代表</small></h3>
+              <p class="player-role">Team Leadership<small>チーム代表</small></p>
+              <p class="player-agent">ARES OKAYAMAの方針と活動全体を統括する代表</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>代表</small></p>
+              <ul>
+                <li><span>Representative</span><strong>Bastet</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card division-card" role="link" tabindex="0" data-division="vice-representative">
+            <div class="player-avatar">V</div>
+            <div class="player-info">
+              <h3>VICE REPRESENTATIVE<small>副代表</small></h3>
+              <p class="player-role">Deputy Leadership<small>副代表</small></p>
+              <p class="player-agent">代表を支え、各部門の連携と運営をサポート</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>副代表</small></p>
+              <ul>
+                <li><span>Vice Representative</span><strong>しーよん</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card division-card" role="link" tabindex="0" data-division="fortnite">
+            <div class="player-avatar">F</div>
+            <div class="player-info">
+              <h3>FORTNITE<small>フォートナイト</small></h3>
+              <p class="player-role">Battle Royale / Zero Build<small>バトルロイヤル / ゼロビルド</small></p>
+              <p class="player-agent">競技シーン、スクリム、コミュニティ大会に参戦</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>メンバー一覧</small></p>
+              <ul>
+                <li><span>Competitive</span><strong>Coming Soon</strong></li>
+                <li><span>Zero Build</span><strong>Coming Soon</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card division-card" role="link" tabindex="0" data-division="players">
+            <div class="player-avatar">P</div>
+            <div class="player-info">
+              <h3>PLAYERS<small>選手</small></h3>
+              <p class="player-role">Competitive Roster<small>競技ロスター</small></p>
+              <p class="player-agent">大会出場と日々の練習で上位を目指す</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>選手一覧</small></p>
+              <ul>
+                <li><span>Player</span><strong>Coming Soon</strong></li>
+                <li><span>Academy Player</span><strong>Recruiting</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card division-card" role="link" tabindex="0" data-division="creators">
+            <div class="player-avatar">C</div>
+            <div class="player-info">
+              <h3>CREATORS<small>クリエイター</small></h3>
+              <p class="player-role">Design / Video Edit<small>デザイナー / 動画編集者</small></p>
+              <p class="player-agent">ビジュアル制作、動画編集、クリップでチームを発信</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>クリエイター一覧</small></p>
+              <ul>
+                <li><span>Creator</span><strong>MILI</strong></li>
+                <li><span>Creator</span><strong>りると</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card division-card" role="link" tabindex="0" data-division="streamers">
+            <div class="player-avatar">S</div>
+            <div class="player-info">
+              <h3>STREAMERS<small>ストリーマー</small></h3>
+              <p class="player-role">Live Streaming<small>配信活動</small></p>
+              <p class="player-agent">日々の配信や企画でチームの魅力を届ける</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>ストリーマー一覧</small></p>
+              <ul>
+                <li><span>Streamer</span><strong>Rax1e | らくしぃ</strong></li>
+                <li><span>Streamer</span><strong>うらすけ</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card division-card" role="link" tabindex="0" data-division="events">
+            <div class="player-avatar">E</div>
+            <div class="player-info">
+              <h3>EVENTS<small>イベント</small></h3>
+              <p class="player-role">Community Cup<small>コミュニティ大会</small></p>
+              <p class="player-agent">フォートナイト交流会やカスタムマッチを開催</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>イベント担当</small></p>
+              <ul>
+                <li><span>Event Staff</span><strong>Coming Soon</strong></li>
+                <li><span>Community Staff</span><strong>Recruiting</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card division-card" role="link" tabindex="0" data-division="academy">
+            <div class="player-avatar">U</div>
+            <div class="player-info">
+              <h3>FORTNITE ACADEMY<small>育成チーム</small></h3>
+              <p class="player-role">Development<small>育成</small></p>
+              <p class="player-agent">若手選手の練習環境と競技理解を支援</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>育成メンバー</small></p>
+              <ul>
+                <li><span>Academy</span><strong>Coming Soon</strong></li>
+                <li><span>Coach</span><strong>Coming Soon</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card player-card--coach division-card" role="link" tabindex="0" data-division="partners">
+            <div class="player-avatar">P</div>
+            <div class="player-info">
+              <h3>PARTNERS<small>パートナー</small></h3>
+              <p class="player-role">Local Collaboration<small>地域連携</small></p>
+              <p class="player-agent">フォートナイトを軸に企業・学校・自治体と連携</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>パートナー担当</small></p>
+              <ul>
+                <li><span>Partner Relations</span><strong>Coming Soon</strong></li>
+                <li><span>Local Support</span><strong>Coming Soon</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="player-card player-card--coach division-card" role="link" tabindex="0" data-division="operations">
+            <div class="player-avatar">H</div>
+            <div class="player-info">
+              <h3>OPERATIONS<small>運営</small></h3>
+              <p class="player-role">Team Management<small>チーム運営</small></p>
+              <p class="player-agent">大会対応、企画進行、選手・配信者の活動をサポート</p>
+            </div>
+            <div class="member-panel" aria-hidden="true">
+              <p class="member-panel-title">Member List<small>運営メンバー</small></p>
+              <ul>
+                <li><span>Operations</span><strong>へいど</strong></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section character" id="character">
+      <div class="container character-inner">
+        <div class="character-text">
+          <span class="section-label">03 — Character<small>キャラクター</small></span>
+          <h2 class="section-title">Coming Soon<small>近日公開</small></h2>
+          <p>
+            ARES OKAYAMAのオリジナルキャラクターは現在準備中です。
+            公開まで楽しみにお待ちください。
+          </p>
+          <ul class="character-tags">
+            <li>Team Mascot<small>チームマスコット</small></li>
+            <li>Event Visual<small>イベントビジュアル</small></li>
+            <li>Goods Design<small>グッズデザイン</small></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section apparel" id="fld">
+      <div class="container apparel-inner">
+        <div class="apparel-text">
+          <span class="section-label">04 — Apparel<small>アパレル</small></span>
+          <h2 class="section-title">FLD</h2>
+          <p>
+            FLDはARES OKAYAMAが展開するアパレルブランドです。
+            ゲームシーンとストリートカルチャーをつなぐ、日常で着られるチームウェアを提案します。
+          </p>
+          <div class="apparel-actions">
+            <a href="https://fld.official.ec/" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><span>Shop</span><small>公式ストア</small></a>
+            <a href="#contact" class="btn btn-ghost"><span>Collaboration</span><small>コラボ相談</small></a>
+            <a href="https://www.instagram.com/fld.jp?igsh=MWY4OTR3aHVoZHlidw%3D%3D&utm_source=qr" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>最新情報 · インスタ</small></a>
+            <a href="https://www.tiktok.com/@fld.jp?_r=1&_t=ZS-96vNGMTcNsn" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>TikTok</span><small>最新情報 · TikTok</small></a>
+          </div>
+        </div>
+        <div class="apparel-card" aria-label="FLD apparel product">
+          <span class="apparel-kicker">FLD Summer Collection<small>FLD サマーコレクション</small></span>
+          <img class="apparel-product" src="apparel-product-cap.png" alt="FLDキャップの商品ビジュアル" />
+          <div class="apparel-card-footer">
+            <img class="apparel-logo" src="apparel-logo.png" alt="FLD アパレルロゴ" />
+            <span>Sporty & Stylish<small>スポーティーでスタイリッシュ</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section news" id="news">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">05 — News<small>お知らせ</small></span>
+          <h2 class="section-title">Latest Updates<small>最新情報</small></h2>
+        </div>
+        <div class="news-grid">
+          <article class="news-card news-card--featured">
+            <a href="https://x.com/aresokayama/status/2049776121567469766?s=20" target="_blank" rel="noopener noreferrer">
+              <img src="news-coming-soon.png" alt="ARES OKAYAMA coming soon announcement" />
+              <div class="news-card-body">
+                <time datetime="2026-04-29">2026.04.29</time>
+                <h3>Coming Soon<small>カミングスーン</small></h3>
+                <p>ARES OKAYAMA始動を予告するティザーを公開。</p>
+              </div>
+            </a>
+          </article>
+          <article class="news-card">
+            <a href="https://x.com/aresokayama/status/2056329615959052470?s=20" target="_blank" rel="noopener noreferrer">
+              <img src="news-rakushii-birthday.png" alt="ARES OKAYAMA streamer rakushii birthday visual" />
+              <div class="news-card-body">
+                <time datetime="2026-05-17">2026.05.17</time>
+                <h3>Happy Birthday<small>ストリーマー「らくしぃ」誕生日</small></h3>
+                <p>ARES OKAYAMA所属ストリーマー、らくしぃのバースデービジュアルを公開。</p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section schedule" id="schedule">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">06 — Schedule<small>予定</small></span>
+          <h2 class="section-title">Coming Soon<small>近日公開</small></h2>
+        </div>
+        <div class="match-list">
+          <article class="match-card match-card--next">
+            <div class="match-details">
+              <p class="match-tournament">Match & Event Schedule<small>試合・イベント予定</small></p>
+              <div class="match-teams">
+                <span class="team team--us">COMING SOON</span>
+              </div>
+              <p class="match-time">最新の試合・イベント情報は近日公開予定です。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sponsors" id="sponsors">
+      <div class="container">
+        <p class="sponsors-label">Official Partners<small>公式スポンサー</small></p>
+        <div class="sponsors-row">
+          <div class="sponsor-group sponsor-group--xenova">
+            <div class="sponsor sponsor--logo">
+              <img src="sponsor-xenova.png" alt="XENOVA" />
+            </div>
+            <div class="sponsor-actions">
+              <a href="https://x.com/XENOVA_official" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>X</span><small>公式X</small></a>
+              <a href="https://xenova.shop" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><span>Shop</span><small>公式ストア</small></a>
+            </div>
+          </div>
+          <div class="sponsor sponsor--logo sponsor--dark sponsor--square" aria-label="公式スポンサー">
+            <img src="sponsor-chimuji.png" alt="公式スポンサー ロゴ" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact-inner">
+        <div class="contact-text">
+          <span class="section-label">07 — Contact<small>お問い合わせ</small></span>
+          <h2 class="section-title">Join ARES OKAYAMA<small>ARES OKAYAMAに参加・相談する</small></h2>
+          <p>スポンサーシップ、選手応募、イベント出演、FLDアパレル、メディア取材に関するお問い合わせはこちらから。</p>
+        </div>
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ares.sportsteam@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="ARES OKAYAMA お問い合わせ" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <div class="form-row">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" required placeholder="山田 太郎" />
+          </div>
+          <div class="form-row">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com" />
+          </div>
+          <div class="form-row">
+            <label for="subject">件名</label>
+            <select id="subject" name="subject">
+              <option value="sponsor">スポンサーについて</option>
+              <option value="tryout">フォートナイト選手応募・トライアウト</option>
+              <option value="event">イベント出演</option>
+              <option value="apparel">FLDアパレルについて</option>
+              <option value="media">メディア・取材</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">メッセージ</label>
+            <textarea id="message" name="message" rows="4" required placeholder="お問い合わせ内容をご記入ください"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">送信する</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#" class="logo logo--footer">
+        <img class="logo-mark" src="team-logo.png" alt="" />
+        <span class="logo-text">ARES OKAYAMA</span>
+      </a>
+      <div class="social-links">
+        <a href="https://x.com/aresokayama" target="_blank" rel="noopener noreferrer" aria-label="ARES OKAYAMA on X">X</a>
+        <a href="https://www.youtube.com/@ARESOKAYAMA" target="_blank" rel="noopener noreferrer" aria-label="ARES OKAYAMA on YouTube">YT</a>
+        <a href="#" aria-label="Twitch">TW</a>
+        <a href="#" aria-label="Discord">DC</a>
+      </div>
+      <p class="photo-credit">
+        Photo: Kurashiki Bikan historical quarter by Suicasmo, CC BY-SA 4.0.
+      </p>
+      <p class="copyright">&copy; 2026 ARES OKAYAMA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
