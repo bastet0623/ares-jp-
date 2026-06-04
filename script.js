@@ -81,15 +81,29 @@
     { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
   );
 
-  document
-    .querySelectorAll(
-      ".section-header, .player-card, .member-profile-card, .news-card, .match-card, .about-text, .about-card, .character-text, .apparel-text, .apparel-card, .contact-text, .contact-form"
-    )
-    .forEach((el, i) => {
+  function bindRevealElements(elements, startIndex = 0) {
+    elements.forEach((el, i) => {
+      if (el.classList.contains("reveal")) return;
       el.classList.add("reveal");
-      el.style.transitionDelay = `${Math.min(i % 6, 5) * 0.05}s`;
+      el.style.transitionDelay = `${Math.min((startIndex + i) % 6, 5) * 0.05}s`;
       revealObserver.observe(el);
     });
+  }
+
+  bindRevealElements(
+    document.querySelectorAll(
+      ".section-header, .player-card, .member-profile-card, .news-card, .match-card, .about-text, .about-card, .character-text, .apparel-text, .apparel-card, .contact-text, .contact-form"
+    )
+  );
+
+  window.addEventListener("ares:news-updated", () => {
+    const cards = document.querySelectorAll("#newsGrid .news-card");
+    cards.forEach((card) => {
+      revealObserver.unobserve(card);
+      card.classList.remove("reveal", "visible");
+    });
+    bindRevealElements(cards);
+  });
 
   // Card spotlight follows the cursor.
   document.querySelectorAll(".player-card, .match-card, .contact-form").forEach((card) => {

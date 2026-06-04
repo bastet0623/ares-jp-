@@ -36,7 +36,7 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about"><span>About</span><small>チーム概要</small></a></li>
-        <li><a href="#divisions"><span>Fortnite</span><small>競技部門</small></a></li>
+        <li><a href="#divisions"><span>Members</span><small>メンバー紹介</small></a></li>
         <li><a href="#character"><span>Character</span><small>キャラクター</small></a></li>
         <li><a href="#fld"><span>FLD</span><small>アパレル</small></a></li>
         <li><a href="#news"><span>News</span><small>お知らせ</small></a></li>
@@ -68,7 +68,7 @@
         </p>
         <div class="hero-actions">
           <a href="#schedule" class="btn btn-primary"><span>Next Match</span><small>次の試合</small></a>
-          <a href="#divisions" class="btn btn-ghost"><span>Fortnite Team</span><small>フォートナイト部門</small></a>
+          <a href="#divisions" class="btn btn-ghost"><span>Members</span><small>メンバー紹介</small></a>
         </div>
         <div class="hero-stats">
           <div class="stat">
@@ -93,14 +93,14 @@
 
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
-        <span>ARES OKAYAMA<small>アレス岡山</small></span>
-        <span>FLD APPAREL<small>FLDアパレル</small></span>
-        <span>RISE FROM OKAYAMA<small>岡山から立ち上がる</small></span>
-        <span>COMPETE WITH PRIDE<small>誇りを持って戦う</small></span>
-        <span>ARES OKAYAMA<small>アレス岡山</small></span>
-        <span>FLD APPAREL<small>FLDアパレル</small></span>
-        <span>RISE FROM OKAYAMA<small>岡山から立ち上がる</small></span>
-        <span>COMPETE WITH PRIDE<small>誇りを持って戦う</small></span>
+        <span>ARES OKAYAMA</span>
+        <span>FLD APPAREL</span>
+        <span>RISE FROM OKAYAMA</span>
+        <span>COMPETE WITH PRIDE</span>
+        <span>ARES OKAYAMA</span>
+        <span>FLD APPAREL</span>
+        <span>RISE FROM OKAYAMA</span>
+        <span>COMPETE WITH PRIDE</span>
       </div>
     </div>
 
@@ -151,8 +151,8 @@
     <section class="section divisions" id="divisions">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">02 — Fortnite<small>フォートナイト</small></span>
-          <h2 class="section-title">Fortnite Team<small>フォートナイト部門</small></h2>
+          <span class="section-label">02 — Members<small>メンバー</small></span>
+          <h2 class="section-title">Member Introduction<small>メンバー紹介</small></h2>
         </div>
         <div class="divisions-grid">
           <article class="player-card player-card--featured division-card" role="link" tabindex="0" data-division="representative">
@@ -344,7 +344,6 @@
           <span class="apparel-kicker">FLD Summer Collection<small>FLD サマーコレクション</small></span>
           <img class="apparel-product" src="apparel-product-cap.png" alt="FLDキャップの商品ビジュアル" />
           <div class="apparel-card-footer">
-            <img class="apparel-logo" src="apparel-logo.png" alt="FLD アパレルロゴ" />
             <span>Sporty & Stylish<small>スポーティーでスタイリッシュ</small></span>
           </div>
         </div>
@@ -357,27 +356,12 @@
           <span class="section-label">05 — News<small>お知らせ</small></span>
           <h2 class="section-title">Latest Updates<small>最新情報</small></h2>
         </div>
-        <div class="news-grid">
-          <article class="news-card news-card--featured">
-            <a href="https://x.com/aresokayama/status/2049776121567469766?s=20" target="_blank" rel="noopener noreferrer">
-              <img src="news-coming-soon.png" alt="ARES OKAYAMA coming soon announcement" />
-              <div class="news-card-body">
-                <time datetime="2026-04-29">2026.04.29</time>
-                <h3>Coming Soon<small>カミングスーン</small></h3>
-                <p>ARES OKAYAMA始動を予告するティザーを公開。</p>
-              </div>
-            </a>
-          </article>
-          <article class="news-card">
-            <a href="https://x.com/aresokayama/status/2056329615959052470?s=20" target="_blank" rel="noopener noreferrer">
-              <img src="news-rakushii-birthday.png" alt="ARES OKAYAMA streamer rakushii birthday visual" />
-              <div class="news-card-body">
-                <time datetime="2026-05-17">2026.05.17</time>
-                <h3>Happy Birthday<small>ストリーマー「らくしぃ」誕生日</small></h3>
-                <p>ARES OKAYAMA所属ストリーマー、らくしぃのバースデービジュアルを公開。</p>
-              </div>
-            </a>
-          </article>
+        <div class="news-grid" id="newsGrid" aria-live="polite"></div>
+        <div class="news-actions" id="newsActions">
+          <a href="news.html" class="btn btn-ghost" id="newsLoadMore">
+            <span>View All News</span>
+            <small>すべて見る</small>
+          </a>
         </div>
       </div>
     </section>
@@ -415,8 +399,15 @@
               <a href="https://xenova.shop" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><span>Shop</span><small>公式ストア</small></a>
             </div>
           </div>
-          <div class="sponsor sponsor--logo sponsor--dark sponsor--square" aria-label="公式スポンサー">
-            <img src="sponsor-chimuji.png" alt="公式スポンサー ロゴ" />
+          <div class="sponsor-group sponsor-group--fld">
+            <div class="sponsor sponsor--logo sponsor--dark">
+              <img src="apparel-logo.png" alt="FLD Apparel" />
+            </div>
+            <div class="sponsor-actions">
+              <a href="https://x.com/FLD_apparel_JP" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>X</span><small>公式X</small></a>
+              <a href="https://www.tiktok.com/@fld.jp?_r=1&_t=ZS-96vNGMTcNsn" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>TikTok</span><small>公式TikTok</small></a>
+              <a href="https://fld.official.ec/" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><span>Shop</span><small>公式ストア</small></a>
+            </div>
           </div>
         </div>
       </div>
@@ -481,6 +472,7 @@
     </div>
   </footer>
 
+  <script src="news.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
