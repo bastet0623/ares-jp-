@@ -2333,6 +2333,15 @@ a.member-profile-x:hover {
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
+.contact-success-label {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
 .contact-success-screen-inner p {
   color: var(--text);
   font-size: 1rem;

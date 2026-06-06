@@ -161,9 +161,19 @@
   }
 
   const contactForm = document.getElementById("contactForm");
+  const contactFormNext = document.getElementById("contactFormNext");
   const contactSuccessScreen = document.getElementById("contactSuccessScreen");
   const contactSuccessHome = document.getElementById("contactSuccessHome");
+  const useNativeContactSubmit = window.matchMedia("(pointer: coarse)").matches;
   let contactSuccessTimer = null;
+
+  function getContactSuccessUrl() {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.hash = "";
+    url.searchParams.set("contact", "success");
+    return url.toString();
+  }
 
   function resetContactForm() {
     if (!contactForm) return;
@@ -187,45 +197,67 @@
       contactSuccessScreen.hidden = true;
       resetContactForm();
       if (goHome) {
-        history.replaceState(null, "", "#hero");
+        history.replaceState(null, "", `${window.location.pathname}#hero`);
         document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
       }
     }, 320);
   }
 
-  function showContactSuccessScreen() {
+  function showContactSuccessScreen(autoReturn = true) {
     if (!contactSuccessScreen) return;
     contactSuccessScreen.hidden = false;
     document.body.classList.add("contact-success-open");
     window.requestAnimationFrame(() => {
       contactSuccessScreen.classList.add("is-visible");
     });
-    contactSuccessTimer = window.setTimeout(() => {
-      hideContactSuccessScreen(true);
-    }, 3000);
+    if (autoReturn) {
+      contactSuccessTimer = window.setTimeout(() => {
+        hideContactSuccessScreen(true);
+      }, 3000);
+    }
+  }
+
+  async function submitContactAjax() {
+    const submitBtn = contactForm.querySelector('[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = "送信中...";
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/ares.sportsteam@gmail.com", {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error("Contact form submit failed");
+      showContactSuccessScreen(true);
+    } catch (error) {
+      console.warn(error);
+      showToast("送信に失敗しました。時間をおいて再度お試しください。");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "送信する";
+    }
+  }
+
+  if (contactFormNext) {
+    contactFormNext.value = getContactSuccessUrl();
+  }
+
+  if (new URLSearchParams(window.location.search).get("contact") === "success") {
+    history.replaceState(null, "", `${window.location.pathname}#hero`);
+    showContactSuccessScreen(true);
   }
 
   if (contactForm && contactSuccessScreen) {
-    contactForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const submitBtn = contactForm.querySelector('[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.textContent = "送信中...";
-
-      try {
-        const response = await fetch("https://formsubmit.co/ajax/ares.sportsteam@gmail.com", {
-          method: "POST",
-          body: new FormData(contactForm),
-          headers: { Accept: "application/json" },
-        });
-        if (!response.ok) throw new Error("Contact form submit failed");
-        showContactSuccessScreen();
-      } catch (error) {
-        console.warn(error);
-        showToast("送信に失敗しました。時間をおいて再度お試しください。");
-        submitBtn.disabled = false;
-        submitBtn.textContent = "送信する";
+    contactForm.addEventListener("submit", (event) => {
+      if (useNativeContactSubmit) {
+        const submitBtn = contactForm.querySelector('[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = "送信中...";
+        return;
       }
+
+      event.preventDefault();
+      void submitContactAjax();
     });
   }
 

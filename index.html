@@ -503,6 +503,7 @@
           <input type="hidden" name="_subject" value="ARES OKAYAMA お問い合わせ" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" id="contactFormNext" value="" />
           <div class="form-row">
             <label for="name">お名前</label>
             <input type="text" id="name" name="name" required placeholder="山田 太郎" />
@@ -553,8 +554,9 @@
 
   <div class="contact-success-screen" id="contactSuccessScreen" hidden aria-live="polite">
     <div class="contact-success-screen-inner">
+      <span class="contact-success-label">送信完了</span>
       <p>お問い合わせありがとうございます。確認後、担当よりご連絡いたします。</p>
-      <a href="#hero" class="btn btn-primary" id="contactSuccessHome"><span>Back to Home</span><small>ホームに戻る</small></a>
+      <a href="#hero" class="btn btn-primary" id="contactSuccessHome">ホームに戻る</a>
     </div>
   </div>
 
