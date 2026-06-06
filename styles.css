@@ -1058,7 +1058,12 @@ body.loaded .loader {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
+}
+
+.about-visual {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .about-text p {
@@ -1240,6 +1245,26 @@ body.loaded .loader {
 
 .about-mvv-card--values .about-values li {
   padding-left: 0.85rem;
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .about-grid {
+    gap: 2.5rem;
+  }
+
+  .about-mvv {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-mvv-card:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .about-mvv-card--values .about-values {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+  }
 }
 
 /* Fortnite */
@@ -2405,8 +2430,17 @@ a.member-profile-x:hover {
     margin-top: 2.5rem;
   }
 
+  .about-mvv-card--values .about-values {
+    display: flex;
+    flex-direction: column;
+  }
+
   .apparel-card {
     max-width: 420px;
+  }
+
+  .about-visual {
+    justify-content: center;
   }
 
   .about-card {
@@ -2438,6 +2472,24 @@ a.member-profile-x:hover {
 
   .brand-card-actions {
     justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .about-visual {
+    justify-content: stretch;
+  }
+
+  .about-card {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
   }
 }
 
