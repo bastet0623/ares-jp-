@@ -8,7 +8,6 @@
   let currentCount = null;
   let hasAnimated = false;
   let rafId = null;
-  let pollTimer = null;
   let inFlight = false;
 
   function formatCount(value) {
@@ -84,20 +83,6 @@
     }
   }
 
-  function startPolling() {
-    if (pollTimer) return;
-    pollTimer = window.setInterval(() => {
-      if (document.hidden) return;
-      refresh(true);
-    }, POLL_MS);
-  }
-
-  function stopPolling() {
-    if (!pollTimer) return;
-    window.clearInterval(pollTimer);
-    pollTimer = null;
-  }
-
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -111,14 +96,11 @@
 
   observer.observe(el);
   refresh(false).then(playIntroAnimation);
-  startPolling();
+  window.setInterval(() => refresh(true), POLL_MS);
 
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      stopPolling();
-      return;
+    if (!document.hidden) {
+      refresh(true);
     }
-    refresh(true);
-    startPolling();
   });
 })();
