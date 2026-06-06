@@ -25,6 +25,16 @@
       banner: true,
     },
     {
+      date: "2026-05-02",
+      href: "https://x.com/aresokayama/status/2050500549385109969",
+      image: "news-member-recruitment.png",
+      imageAlt: "ARES OKAYAMA 再始動メンバー募集",
+      title: "Member Recruitment",
+      titleJa: "再始動メンバー募集",
+      description:
+        "ARES OKAYAMAの再始動に伴い、Fortnite部門・STAFF部門（運営・デザイナー）のメンバー募集を開始しました。",
+    },
+    {
       date: "2026-05-17",
       href: "https://x.com/aresokayama/status/2056329615959052470?s=20",
       image: "news-rakushii-birthday.png",

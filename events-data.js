@@ -1,6 +1,7 @@
 window.ARES_EVENTS = [
   {
     id: "event-01",
+    date: "2024-08-07",
     icon: "01",
     name: "ARES 結成記念イベント",
     role: "2024年8月7日",
@@ -9,6 +10,7 @@ window.ARES_EVENTS = [
   },
   {
     id: "event-02",
+    date: "2024-08-13",
     icon: "02",
     name: "新シーズン開幕 V-BUCKSイベント",
     role: "2024年8月13日",
@@ -17,6 +19,7 @@ window.ARES_EVENTS = [
   },
   {
     id: "event-03",
+    date: "2024-08-22",
     icon: "03",
     name: "チャンピオンアックス2.0イベント",
     role: "2024年8月22日",
@@ -25,6 +28,7 @@ window.ARES_EVENTS = [
   },
   {
     id: "event-04",
+    date: "2024-09-10",
     icon: "04",
     name: "FNCS Global Championship記念イベント",
     role: "2024年9月10日",
@@ -33,6 +37,7 @@ window.ARES_EVENTS = [
   },
   {
     id: "event-05",
+    date: "2025-01-01",
     icon: "05",
     name: "お正月イベント",
     role: "2025年1月1日",
@@ -41,10 +46,11 @@ window.ARES_EVENTS = [
   },
   {
     id: "event-06",
+    date: "2025-08-02",
     icon: "06",
     name: "ARES OKAYAMA 1周年記念イベント",
     role: "2025年8月2日",
-    bio: "1周年記念として、MonsGeek Fun60 Ultra SP 3名、ATTACK SHARK R5 Ultra 2名、PayPay 3,000円分 1名にプレゼントしたイベントです。",
+    bio: "1周年記念として、MonsGeek Fun60 Ultra 3名、ATTACK SHARK R5 Ultra 2名、PayPay 3,000円分 1名にプレゼントしたイベントです。",
     tweet: "https://x.com/aresokayama/status/1951617477663936921",
   },
 ];

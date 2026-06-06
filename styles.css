@@ -784,8 +784,37 @@ body.loaded .loader {
   color: var(--text);
 }
 
+.stat-value--live {
+  position: relative;
+}
+
 .stat-value--live[data-loading] {
   opacity: 0.72;
+}
+
+.stat-value--live:not([data-loading])::after {
+  content: "";
+  position: absolute;
+  top: 0.2em;
+  right: -0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.65);
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
 }
 
 @keyframes fadeUp {
@@ -1126,6 +1155,91 @@ body.loaded .loader {
 .about-card p {
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+.about-mvv {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.about-mvv-card {
+  padding: 1.75rem;
+  background: rgba(18, 18, 15, 0.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.about-mvv-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.about-mvv-label small {
+  display: block;
+  margin-top: 0.22rem;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: rgba(255, 247, 214, 0.55);
+}
+
+.about-mvv-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.about-mvv-card h3 small {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.about-mvv-card p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.about-mvv-card p + p {
+  margin-top: 0.85rem;
+}
+
+.about-mvv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-mvv-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  border-left: 2px solid rgba(254, 214, 28, 0.35);
+}
+
+.about-mvv-card--values .about-values {
+  margin-top: 0;
+  gap: 1rem;
+}
+
+.about-mvv-card--values .about-values li {
+  padding-left: 0.85rem;
 }
 
 /* Fortnite */
@@ -1716,6 +1830,16 @@ a.member-profile-x:hover {
   text-transform: none;
 }
 
+.apparel-product-link {
+  display: block;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.apparel-product-link:hover {
+  transform: translateY(-4px);
+  opacity: 0.92;
+}
+
 .apparel-product {
   width: 100%;
   min-height: 0;
@@ -2269,10 +2393,16 @@ a.member-profile-x:hover {
 
 @media (max-width: 900px) {
   .about-grid,
+  .about-mvv,
   .apparel-inner,
   .contact-inner {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .about-mvv {
+    gap: 1.25rem;
+    margin-top: 2.5rem;
   }
 
   .apparel-card {

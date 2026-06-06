@@ -1,5 +1,5 @@
 (function () {
-  const events = window.ARES_EVENTS || [];
+  const events = [...(window.ARES_EVENTS || [])].sort((a, b) => b.date.localeCompare(a.date));
 
   function renderEventCard(event) {
     const tweetLink = event.tweet

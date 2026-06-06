@@ -24,6 +24,7 @@
       members: [
         {
           icon: "し",
+          image: "vice-representative-shion.png",
           name: "しーよん",
           role: "Vice Representative",
           bio: "ARES OKAYAMA副代表。代表を支え、各部門の連携とチーム運営をサポートします。",
@@ -59,9 +60,10 @@
       members: [
         {
           icon: "M",
+          image: "creator-mili.png",
           name: "MILI",
           role: "Creator",
-          bio: "ARES OKAYAMA所属クリエイター。デザインやビジュアル制作でチームを支えます。",
+          bio: "ARES OKAYAMAでデザイナーとして所属しています。ヘッダー ポスター サムネイル デザイン全般を高クオリティで作成します！是非依頼してみてください！よろしくお願いします！",
           x: "https://x.com/Mili_FN_",
         },
         {
@@ -87,7 +89,13 @@
           bio: "元々ApexLegendsの競技選手をやっていましたが、一旦身を引いて現在はエイム理論や戦術、戦略を勉強しながらSNSで発信を行っています。第一印象はよく「お堅そう」と言われますが、面白い一面も持っていたりします。よろしくお願いします！",
           x: "https://x.com/rax1ez",
         },
-        { icon: "う", name: "うらすけ", role: "Streamer", bio: "ARES OKAYAMA所属ストリーマー。ゲーム実況やコミュニティ配信でチームを盛り上げます。" },
+        {
+          icon: "う",
+          image: "streamer-urasuke.png",
+          name: "うらすけ",
+          role: "Streamer",
+          bio: "ARES OKAYAMA所属ストリーマー。ゲーム実況やコミュニティ配信でチームを盛り上げます。",
+        },
       ],
     },
     events: {
@@ -125,9 +133,10 @@
       members: [
         {
           icon: "H",
+          image: "operations-heido.png",
           name: "へいど",
           role: "Operations",
-          bio: "ARES OKAYAMA運営担当。大会対応、企画進行、選手・配信者の活動をサポートします。",
+          bio: "元々Fortniteの選手で活動していましたが現在は、裏で選手を支える運営として活動しております。色んな事に挑戦したいです。よろしくお願いします。",
           x: "https://x.com/heid_1202",
         },
       ],

@@ -1,13 +1,15 @@
 (function () {
   const SCREEN_NAME = "aresokayama";
   const API_URL = `https://api.vxtwitter.com/${SCREEN_NAME}`;
-  const POLL_MS = 30000;
+  const POLL_MS = 15000;
   const el = document.getElementById("followerCount");
   if (!el) return;
 
   let currentCount = null;
   let hasAnimated = false;
   let rafId = null;
+  let pollTimer = null;
+  let inFlight = false;
 
   function formatCount(value) {
     return value.toLocaleString("ja-JP");
@@ -32,25 +34,22 @@
     rafId = requestAnimationFrame(tick);
   }
 
-  function setDisplay(count, animate) {
-    if (!animate) {
-      el.textContent = formatCount(count);
-      return;
-    }
+  function isInViewport() {
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.75 && rect.bottom > 0;
+  }
 
-    if (!hasAnimated) {
-      animateCount(0, count);
-      hasAnimated = true;
-      return;
-    }
-
-    if (currentCount !== count) {
-      animateCount(currentCount, count, 800);
-    }
+  function playIntroAnimation() {
+    if (hasAnimated || currentCount === null || !isInViewport()) return;
+    animateCount(0, currentCount);
+    hasAnimated = true;
   }
 
   async function fetchFollowers() {
-    const response = await fetch(API_URL, { cache: "no-store" });
+    const response = await fetch(API_URL, {
+      cache: "no-store",
+      headers: { Accept: "application/json" },
+    });
     if (!response.ok) throw new Error(`Follower fetch failed: ${response.status}`);
     const data = await response.json();
     const count = data.followers_count ?? data.user?.followers;
@@ -58,31 +57,68 @@
     return count;
   }
 
-  async function updateFollowers(animate) {
+  async function refresh(animate = false) {
+    if (inFlight) return;
+    inFlight = true;
     try {
       const count = await fetchFollowers();
-      setDisplay(count, animate);
+      const prev = currentCount;
       currentCount = count;
       el.removeAttribute("data-loading");
+
+      if (animate && !hasAnimated) {
+        animateCount(0, count);
+        hasAnimated = true;
+      } else if (animate && prev !== null && prev !== count) {
+        animateCount(prev, count, 800);
+      } else {
+        el.textContent = formatCount(count);
+      }
     } catch (error) {
       console.warn("Failed to update follower count:", error);
       if (currentCount === null) {
         el.textContent = "--";
       }
+    } finally {
+      inFlight = false;
     }
+  }
+
+  function startPolling() {
+    if (pollTimer) return;
+    pollTimer = window.setInterval(() => {
+      if (document.hidden) return;
+      refresh(true);
+    }, POLL_MS);
+  }
+
+  function stopPolling() {
+    if (!pollTimer) return;
+    window.clearInterval(pollTimer);
+    pollTimer = null;
   }
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        updateFollowers(true);
+        playIntroAnimation();
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.25 }
   );
 
   observer.observe(el);
-  setInterval(() => updateFollowers(true), POLL_MS);
+  refresh(false).then(playIntroAnimation);
+  startPolling();
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopPolling();
+      return;
+    }
+    refresh(true);
+    startPolling();
+  });
 })();

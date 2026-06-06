@@ -92,7 +92,7 @@
 
   bindRevealElements(
     document.querySelectorAll(
-      ".section-header, .player-card, .member-profile-card, .news-card, .match-card, .about-text, .about-card, .character-text, .apparel-text, .apparel-card, .contact-text, .contact-form"
+      ".section-header, .player-card, .member-profile-card, .news-card, .match-card, .about-text, .about-card, .about-mvv-card, .character-text, .apparel-text, .apparel-card, .contact-text, .contact-form"
     )
   );
 
