@@ -160,6 +160,82 @@
     renderCursorTube();
   }
 
+  const contactForm = document.getElementById("contactForm");
+  const contactSuccessScreen = document.getElementById("contactSuccessScreen");
+  const contactSuccessHome = document.getElementById("contactSuccessHome");
+  let contactSuccessTimer = null;
+
+  function resetContactForm() {
+    if (!contactForm) return;
+    const submitBtn = contactForm.querySelector('[type="submit"]');
+    contactForm.reset();
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "送信する";
+    }
+  }
+
+  function hideContactSuccessScreen(goHome = true) {
+    if (!contactSuccessScreen) return;
+    if (contactSuccessTimer) {
+      window.clearTimeout(contactSuccessTimer);
+      contactSuccessTimer = null;
+    }
+    contactSuccessScreen.classList.remove("is-visible");
+    document.body.classList.remove("contact-success-open");
+    window.setTimeout(() => {
+      contactSuccessScreen.hidden = true;
+      resetContactForm();
+      if (goHome) {
+        history.replaceState(null, "", "#hero");
+        document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 320);
+  }
+
+  function showContactSuccessScreen() {
+    if (!contactSuccessScreen) return;
+    contactSuccessScreen.hidden = false;
+    document.body.classList.add("contact-success-open");
+    window.requestAnimationFrame(() => {
+      contactSuccessScreen.classList.add("is-visible");
+    });
+    contactSuccessTimer = window.setTimeout(() => {
+      hideContactSuccessScreen(true);
+    }, 3000);
+  }
+
+  if (contactForm && contactSuccessScreen) {
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitBtn = contactForm.querySelector('[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = "送信中...";
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/ares.sportsteam@gmail.com", {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: { Accept: "application/json" },
+        });
+        if (!response.ok) throw new Error("Contact form submit failed");
+        showContactSuccessScreen();
+      } catch (error) {
+        console.warn(error);
+        showToast("送信に失敗しました。時間をおいて再度お試しください。");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "送信する";
+      }
+    });
+  }
+
+  if (contactSuccessHome) {
+    contactSuccessHome.addEventListener("click", (event) => {
+      event.preventDefault();
+      hideContactSuccessScreen(true);
+    });
+  }
+
   function showToast(message) {
     let toast = document.querySelector(".toast");
     if (!toast) {
