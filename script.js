@@ -114,7 +114,7 @@
     });
   });
 
-  // Fortnite division cards navigate to each member profile page.
+  // Division cards navigate to each member profile page.
   document.querySelectorAll(".division-card").forEach((card) => {
     function openDivisionPage() {
       const division = card.dataset.division;

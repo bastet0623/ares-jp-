@@ -94,11 +94,8 @@
       label: "Events",
       title: "EVENTS",
       subtitle: "イベント",
-      desc: "フォートナイト交流会やカスタムマッチを企画・運営する部門です。",
-      members: [
-        { icon: "E", name: "Coming Soon", role: "Event Staff", bio: "イベント進行、告知、当日の運営を担当します。" },
-        { icon: "C", name: "Recruiting", role: "Community Staff", bio: "コミュニティイベントを一緒につくるスタッフを募集しています。" },
-      ],
+      desc: "ARES OKAYAMAではコミュニティ向けのイベントを開催しています。",
+      members: [],
     },
     academy: {
       label: "Academy",
@@ -139,6 +136,12 @@
 
   const params = new URLSearchParams(window.location.search);
   const key = params.get("division") || "fortnite";
+
+  if (key === "events") {
+    window.location.replace(`events.html${window.location.hash}`);
+    return;
+  }
+
   const division = divisions[key] || divisions.fortnite;
 
   document.title = `${division.title} | ARES OKAYAMA`;
@@ -155,11 +158,18 @@
   }
 
   function renderMemberCard(member) {
-    const isLink = Boolean(member.x);
-    const tag = isLink ? "a" : "article";
-    const attrs = isLink
+    const isProfileLink = Boolean(member.x);
+    const tag = isProfileLink ? "a" : "article";
+    const idAttr = member.id ? ` id="${member.id}"` : "";
+    const attrs = isProfileLink
       ? `class="member-profile-card member-profile-card--link" href="${member.x}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のXプロフィールを開く"`
-      : `class="member-profile-card"`;
+      : `class="member-profile-card"${idAttr}`;
+
+    const actionMarkup = isProfileLink
+      ? '<span class="member-profile-x">View on X<small>Xで見る</small></span>'
+      : member.tweet
+        ? `<a class="member-profile-x" href="${member.tweet}" target="_blank" rel="noopener noreferrer">View Tweet<small>告知ツイートを見る</small></a>`
+        : "";
 
     return `
       <${tag} ${attrs}>
@@ -168,7 +178,7 @@
           <span class="member-profile-role">${member.role}</span>
           <h3>${member.name}</h3>
           <p>${member.bio}</p>
-          ${isLink ? '<span class="member-profile-x">View on X<small>Xで見る</small></span>' : ""}
+          ${actionMarkup}
         </div>
       </${tag}>
     `;
