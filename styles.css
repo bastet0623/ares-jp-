@@ -1056,7 +1056,7 @@ body.loaded .loader {
 /* About */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   gap: 4rem;
   align-items: start;
 }
@@ -1064,6 +1064,7 @@ body.loaded .loader {
 .about-visual {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
 }
 
 .about-text p {
@@ -1110,8 +1111,9 @@ body.loaded .loader {
 
 .about-card {
   position: relative;
+  width: 100%;
   aspect-ratio: 4/5;
-  max-width: 320px;
+  max-width: 480px;
   margin-left: auto;
   background:
     linear-gradient(180deg, rgba(2, 2, 2, 0.12), rgba(2, 2, 2, 0.86)),
@@ -2458,6 +2460,7 @@ body.contact-success-open {
   }
 
   .about-card {
+    max-width: 540px;
     aspect-ratio: 3 / 4;
   }
 
@@ -2768,7 +2771,8 @@ body.contact-success-open {
   }
 
   .about-card {
-    width: min(100%, 360px);
+    width: min(100%, 440px);
+    max-width: none;
     aspect-ratio: 4 / 5;
   }
 

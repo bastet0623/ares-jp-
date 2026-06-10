@@ -9,7 +9,7 @@
         {
           icon: "代",
           image: "representative-icon.png",
-          name: "Bastet",
+          name: "ばすてとぉ / bastet",
           role: "Representative",
           bio: "ARES OKAYAMA代表。チームの方針づくりと活動全体を統括しています。",
           x: "https://x.com/Bastet_designer",
