@@ -4,15 +4,25 @@
   /** @type {Array<{date: string, href: string, image: string, images?: string[], imageAlt: string, title: string, titleJa: string, description: string, banner?: boolean, featured?: boolean}>} */
   const newsItems = [
     {
+      date: "2026-06-08",
+      href: "https://x.com/aresokayama/status/2063909149193474526",
+      image: "news-member-recruitment-2026.png",
+      imageAlt: "ARES OKAYAMA メンバー募集",
+      title: "Member Recruitment",
+      titleJa: "メンバー募集",
+      description:
+        "Fortnite部門・CREATOR部門・STAFF部門のメンバー募集を開始。本気で上を目指したい方、チームと共に成長したい方を募集しています。",
+    },
+    {
       date: "2026-06-05",
       href: "https://x.com/FLD_apparel_JP/status/2062576981464719565",
       image: "news-fld-denim-cap.png",
       images: ["news-fld-denim-cap.png", "news-fld-denim-cap-detail.png"],
       imageAlt: "FLD 新作ダメージデニムキャップ",
       title: "FLD New Cap",
-      titleJa: "FLD新作ダメージデニムキャップ",
+      titleJa: "FLD新作キャップ",
       description:
-        "ARES OKAYAMAアパレルブランドFLDより、ダメージデニムキャップの新作を発売。フロントロゴとバックルディテールを公開しました。",
+        "アパレルブランドFLDより、ダメージデニムキャップの新作を発売。フロントロゴとバックルディテールを公開しました。",
     },
     {
       date: "2026-06-04",
