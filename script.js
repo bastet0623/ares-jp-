@@ -105,12 +105,20 @@
     bindRevealElements(cards);
   });
 
+  function updateCardGlow(card, event) {
+    const rect = card.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    const localX = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+    const localY = Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100));
+    card.style.setProperty("--mouse-x", `${localX}%`);
+    card.style.setProperty("--mouse-y", `${localY}%`);
+  }
+
   // Card spotlight follows the cursor.
   document.querySelectorAll(".player-card, .match-card, .contact-form").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty("--mouse-x", `${event.clientX - rect.left}px`);
-      card.style.setProperty("--mouse-y", `${event.clientY - rect.top}px`);
+      updateCardGlow(card, event);
     });
   });
 
@@ -133,18 +141,58 @@
   // Cursor tube effect
   if (cursorTube && !window.matchMedia("(pointer: coarse)").matches) {
     const nodes = Array.from(cursorTube.querySelectorAll("span"));
+    const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).width) || 22);
     const points = nodes.map(() => ({ x: -100, y: -100 }));
     const pointer = { x: -100, y: -100 };
 
-    window.addEventListener("pointermove", (event) => {
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
-      document.body.classList.add("cursor-active");
-    });
+    function syncCursorLayer() {
+      const vv = window.visualViewport;
+      if (!vv) {
+        cursorTube.style.inset = "0";
+        cursorTube.style.width = "";
+        cursorTube.style.height = "";
+        cursorTube.style.transform = "";
+        return;
+      }
 
-    window.addEventListener("pointerleave", () => {
+      cursorTube.style.inset = "auto";
+      cursorTube.style.left = `${vv.offsetLeft}px`;
+      cursorTube.style.top = `${vv.offsetTop}px`;
+      cursorTube.style.width = `${vv.width}px`;
+      cursorTube.style.height = `${vv.height}px`;
+      cursorTube.style.transform = "";
+    }
+
+    function setCursorCoords(event) {
+      const vv = window.visualViewport;
+      const offsetLeft = vv?.offsetLeft ?? 0;
+      const offsetTop = vv?.offsetTop ?? 0;
+      pointer.x = event.clientX - offsetLeft;
+      pointer.y = event.clientY - offsetTop;
+    }
+
+    function onPointerMove(event) {
+      syncCursorLayer();
+      setCursorCoords(event);
+      document.body.classList.add("cursor-active");
+    }
+
+    function onPointerLeave(event) {
+      if (event.relatedTarget) return;
       document.body.classList.remove("cursor-active");
-    });
+    }
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("mousemove", onPointerMove, { passive: true });
+    document.documentElement.addEventListener("pointerleave", onPointerLeave);
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", syncCursorLayer);
+      window.visualViewport.addEventListener("scroll", syncCursorLayer);
+    }
+
+    window.addEventListener("resize", syncCursorLayer);
+    syncCursorLayer();
 
     function renderCursorTube() {
       points.forEach((point, index) => {
@@ -152,7 +200,9 @@
         const ease = 0.34 - index * 0.035;
         point.x += (target.x - point.x) * ease;
         point.y += (target.y - point.y) * ease;
-        nodes[index].style.transform = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%)`;
+        const radius = sizes[index] / 2;
+        nodes[index].style.left = `${point.x - radius}px`;
+        nodes[index].style.top = `${point.y - radius}px`;
       });
       requestAnimationFrame(renderCursorTube);
     }
