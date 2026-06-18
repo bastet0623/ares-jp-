@@ -330,31 +330,86 @@
     setTimeout(() => toast.classList.remove("show"), 4000);
   }
 
+  let tickerLogoTemplate = null;
+
   function fillTickerTrack() {
     const track = document.getElementById("tickerTrack");
+    const seed = document.getElementById("tickerSeed");
     if (!track) return;
 
-    const seed = track.querySelector(".ticker-set");
-    if (!seed) return;
-
-    while (track.children.length > 2) {
-      track.removeChild(track.lastElementChild);
+    if (!tickerLogoTemplate && seed) {
+      tickerLogoTemplate = [...seed.querySelectorAll("img")].map((logo) => ({
+        src: logo.getAttribute("src"),
+        alt: logo.getAttribute("alt") || "",
+        className: logo.className,
+      }));
     }
 
-    const template = seed.cloneNode(true);
-    const minHalfWidth = window.innerWidth * 1.1;
-    let guard = 0;
+    if (!tickerLogoTemplate?.length) return;
 
-    while (track.scrollWidth / 2 < minHalfWidth && guard < 12) {
-      track.appendChild(template.cloneNode(true));
-      guard += 1;
+    function createLogoNode({ src, alt, className }) {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt;
+      if (className) img.className = className;
+      return img;
     }
 
-    if (track.children.length % 2 !== 0) {
-      track.appendChild(template.cloneNode(true));
+    function createHalf() {
+      const half = document.createElement("div");
+      half.className = "ticker-set";
+
+      const probe = document.createElement("div");
+      probe.className = "ticker-set";
+      probe.setAttribute("aria-hidden", "true");
+      probe.style.cssText =
+        "position:fixed;left:-9999px;top:0;visibility:hidden;pointer-events:none";
+      document.body.appendChild(probe);
+
+      while (probe.scrollWidth < window.innerWidth) {
+        tickerLogoTemplate.forEach((logo) => probe.appendChild(createLogoNode(logo)));
+      }
+
+      half.innerHTML = probe.innerHTML;
+      probe.remove();
+      return half;
     }
+
+    track.style.animation = "none";
+
+    const first = createHalf();
+    const second = first.cloneNode(true);
+    second.setAttribute("aria-hidden", "true");
+    second.querySelectorAll("img").forEach((img) => {
+      img.alt = "";
+    });
+
+    track.replaceChildren(first, second);
+
+    void track.offsetWidth;
+    track.style.animation = "";
   }
 
-  fillTickerTrack();
+  function initTicker() {
+    const seed = document.getElementById("tickerSeed");
+    if (!seed) return;
+
+    const images = seed.querySelectorAll("img");
+    const waitForImages = [...images].map(
+      (img) =>
+        new Promise((resolve) => {
+          if (img.complete) {
+            resolve();
+            return;
+          }
+          img.addEventListener("load", resolve, { once: true });
+          img.addEventListener("error", resolve, { once: true });
+        })
+    );
+
+    Promise.all(waitForImages).then(fillTickerTrack);
+  }
+
+  initTicker();
   window.addEventListener("resize", fillTickerTrack, { passive: true });
 })();

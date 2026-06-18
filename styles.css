@@ -956,8 +956,6 @@ body.loaded .loader {
   width: auto;
   margin: 0 40px;
   object-fit: contain;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
 }
 
 .ticker-set img.ticker-logo--xenova,
@@ -967,10 +965,6 @@ body.loaded .loader {
 
 .ticker-set img.ticker-logo--xenova {
   filter: brightness(0) invert(1);
-}
-
-.ticker-set img:hover {
-  opacity: 1;
 }
 
 @keyframes tickerScroll {
