@@ -921,36 +921,66 @@ body.loaded .loader {
   color: var(--text);
 }
 
-/* Infinite ticker */
+/* Sponsor logo ticker (ref: wild-esports.site) */
 .ticker {
+  position: relative;
+  width: 100%;
+  padding: 56px 0;
   overflow: hidden;
-  border-block: 1px solid rgba(254, 214, 28, 0.28);
-  background: var(--accent);
-  color: var(--bg);
+  background-color: #000;
+}
+
+.ticker-slider {
+  width: 100%;
+  overflow: hidden;
 }
 
 .ticker-track {
-  width: max-content;
   display: flex;
-  gap: 2rem;
-  padding: 0.85rem 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 4vw, 3rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  animation: tickerMove 22s linear infinite;
+  align-items: center;
+  width: max-content;
+  animation: tickerScroll 24s linear infinite;
+  will-change: transform;
 }
 
-.ticker-track span::after {
-  content: "/";
-  margin-left: 2rem;
+.ticker-set {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-@keyframes tickerMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.ticker-set img {
+  display: block;
+  flex-shrink: 0;
+  height: clamp(36px, 5vw, 48px);
+  width: auto;
+  margin: 0 40px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.ticker-set img.ticker-logo--xenova,
+.ticker-set img.ticker-logo--fld {
+  height: clamp(56px, 8.5vw, 72px);
+}
+
+.ticker-set img.ticker-logo--xenova {
+  filter: brightness(0) invert(1);
+}
+
+.ticker-set img:hover {
+  opacity: 1;
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Buttons */
@@ -2214,7 +2244,7 @@ a.member-profile-x:hover {
   display: grid;
   grid-template-columns: minmax(220px, 280px) 1fr;
   gap: 2rem;
-  align-items: center;
+  align-items: stretch;
   width: min(760px, 100%);
   padding: 2rem;
   background: var(--bg-card);
@@ -2224,8 +2254,9 @@ a.member-profile-x:hover {
 }
 
 .brand-card-logo {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 160px;
   padding: 2rem;
   background: #000;
@@ -2247,6 +2278,12 @@ a.member-profile-x:hover {
   filter: drop-shadow(0 0 16px var(--accent-dim));
 }
 
+.brand-card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .brand-card-info h3 {
   font-family: var(--font-display);
   font-size: 1.35rem;
@@ -2261,10 +2298,83 @@ a.member-profile-x:hover {
 }
 
 .brand-card-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
   gap: 0.75rem;
   margin-top: 1.25rem;
+}
+
+.brand-card-actions .btn {
+  width: 100%;
+}
+
+.sponsors-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.sponsors-page {
+  padding-top: 0;
+}
+
+.sponsors-page .brand-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.sponsors-page .brand-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.sponsors-page .brand-card-info {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.sponsors-page .brand-card-info p {
+  flex: 1;
+}
+
+.sponsors-page .brand-card-actions {
+  margin-top: auto;
+  width: 100%;
+}
+
+.sponsors-cta {
+  padding: 4rem 0 5rem;
+  background: rgba(11, 11, 9, 0.55);
+  border-top: 1px solid var(--border);
+}
+
+.sponsors-cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.sponsors-cta-text {
+  flex: 1 1 320px;
+}
+
+.sponsors-cta-text p {
+  max-width: 36rem;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
 }
 
 /* Contact */
@@ -2549,7 +2659,12 @@ body.contact-success-open {
   }
 
   .brand-card-actions {
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  }
+
+  .sponsors-cta-inner {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
@@ -2775,8 +2890,18 @@ body.contact-success-open {
     font-size: 0.62rem;
   }
 
-  .ticker-track {
-    font-size: clamp(1.15rem, 8vw, 2rem);
+  .ticker {
+    padding: 44px 0;
+  }
+
+  .ticker-set img {
+    height: clamp(32px, 8vw, 40px);
+    margin: 0 28px;
+  }
+
+  .ticker-set img.ticker-logo--xenova,
+  .ticker-set img.ticker-logo--fld {
+    height: clamp(48px, 12vw, 60px);
   }
 
   .video-showcase {

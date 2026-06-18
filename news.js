@@ -4,6 +4,27 @@
   /** @type {Array<{date: string, href: string, image: string, images?: string[], imageAlt: string, title: string, titleJa: string, description: string, banner?: boolean, featured?: boolean}>} */
   const newsItems = [
     {
+      date: "2026-06-18",
+      href: "https://x.com/aresokayama/status/2067532849864183982",
+      image: "news-shirashimo-welcome.png",
+      imageAlt: "ストリーマー 白霜 優萊 WELCOME ARES STREAMER",
+      title: "New Streamer",
+      titleJa: "ストリーマー「白霜 優萊」加入",
+      description:
+        "ARES OKAYAMAストリーマーに白霜 優萊さんが加入。FPS配信を中心に、ゲーム競技・スポーツ分野でも数多くの実績を持つストリーマーです。",
+      banner: true,
+    },
+    {
+      date: "2026-06-12",
+      href: "https://x.com/aresokayama/status/2065358457994375243",
+      image: "team-logo.png",
+      imageAlt: "ARES OKAYAMA 公式ホームページ リニューアル",
+      title: "Website Renewal",
+      titleJa: "公式ホームページ リニューアル",
+      description:
+        "ARES OKAYAMAの公式ホームページをリニューアル。チーム情報・最新のお知らせ・メンバー募集情報などをより見やすく掲載しています。",
+    },
+    {
       date: "2026-06-08",
       href: "https://x.com/aresokayama/status/2063909149193474526",
       image: "news-member-recruitment-2026.png",

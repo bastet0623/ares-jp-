@@ -329,4 +329,32 @@
     toast.classList.add("show");
     setTimeout(() => toast.classList.remove("show"), 4000);
   }
+
+  function fillTickerTrack() {
+    const track = document.getElementById("tickerTrack");
+    if (!track) return;
+
+    const seed = track.querySelector(".ticker-set");
+    if (!seed) return;
+
+    while (track.children.length > 2) {
+      track.removeChild(track.lastElementChild);
+    }
+
+    const template = seed.cloneNode(true);
+    const minHalfWidth = window.innerWidth * 1.1;
+    let guard = 0;
+
+    while (track.scrollWidth / 2 < minHalfWidth && guard < 12) {
+      track.appendChild(template.cloneNode(true));
+      guard += 1;
+    }
+
+    if (track.children.length % 2 !== 0) {
+      track.appendChild(template.cloneNode(true));
+    }
+  }
+
+  fillTickerTrack();
+  window.addEventListener("resize", fillTickerTrack, { passive: true });
 })();

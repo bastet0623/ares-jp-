@@ -96,6 +96,15 @@
           role: "Streamer",
           bio: "ARES OKAYAMA所属ストリーマー。ゲーム実況やコミュニティ配信でチームを盛り上げます。",
         },
+        {
+          icon: "白",
+          image: "streamer-shirashimo.png",
+          name: "白霜 優萊",
+          role: "Streamer",
+          x: "https://x.com/EtNty_SeRapH",
+          bio:
+            "FPSゲームを中心に活動しているストリーマーです。<br><br>主にApex Legendsの参加型配信やFPS関連コンテンツを配信しており、視聴者の皆様と一緒に楽しめる配信を心掛けています。<br><br>過去にはAVA（Alliance of Valiant Arms）公式大会「ODL 爆破リーグ王座決定戦 ビギナーリーグ」にて優勝経験があります。<br><br>現在はゲーム配信だけでなく、雑談配信や回胴式遊技機を使用した配信など幅広く活動中です。<br><br>ARES OKAYAMAの一員として、チームの魅力を発信しながら多くの方に楽しんでいただけるコンテンツ作りに取り組んでまいります。",
+        },
       ],
     },
     events: {

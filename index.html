@@ -42,7 +42,7 @@
         <li><a href="#news"><span>News</span><small>お知らせ</small></a></li>
         <li><a href="#schedule"><span>Schedule</span><small>予定</small></a></li>
         <li><a href="events.html"><span>Events</span><small>イベント</small></a></li>
-        <li><a href="#sponsors"><span>Sponsors</span><small>公式スポンサー</small></a></li>
+        <li><a href="sponsors.html"><span>Sponsors</span><small>公式スポンサー</small></a></li>
         <li><a href="#member-brands"><span>Product Support</span><small>プロダクトサポート</small></a></li>
         <li><a href="#contact" class="nav-cta"><span>Contact</span><small>お問い合わせ</small></a></li>
       </ul>
@@ -79,7 +79,7 @@
             <span class="stat-label">Game Title<small>競技タイトル</small></span>
           </div>
           <div class="stat">
-            <span class="stat-value" data-count="6">0</span>
+            <span class="stat-value" data-count="7">0</span>
             <span class="stat-label">Members<small>メンバー</small></span>
           </div>
           <div class="stat">
@@ -96,16 +96,20 @@
       </div>
     </section>
 
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <span>ARES OKAYAMA</span>
-        <span>FLD APPAREL</span>
-        <span>RISE FROM OKAYAMA</span>
-        <span>COMPETE WITH PRIDE</span>
-        <span>ARES OKAYAMA</span>
-        <span>FLD APPAREL</span>
-        <span>RISE FROM OKAYAMA</span>
-        <span>COMPETE WITH PRIDE</span>
+    <div class="ticker" aria-label="公式スポンサー・プロダクトサポート">
+      <div class="ticker-slider">
+        <div class="ticker-track" id="tickerTrack">
+          <div class="ticker-set">
+            <img src="ticker-xenova.png" alt="XENOVA" class="ticker-logo--xenova" />
+            <img src="ticker-fld.png" alt="FLD Apparel" class="ticker-logo--fld" />
+            <img src="wallhack-logo.png" alt="WALLHACK" />
+          </div>
+          <div class="ticker-set" aria-hidden="true">
+            <img src="ticker-xenova.png" alt="" class="ticker-logo--xenova" />
+            <img src="ticker-fld.png" alt="" class="ticker-logo--fld" />
+            <img src="wallhack-logo.png" alt="" />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -264,6 +268,7 @@
               <ul>
                 <li><span>Streamer</span><strong>Rax1e | らくしぃ</strong></li>
                 <li><span>Streamer</span><strong>うらすけ</strong></li>
+                <li><span>Streamer</span><strong>白霜 優萊</strong></li>
               </ul>
             </div>
           </article>
@@ -424,40 +429,12 @@
         <p class="brand-section-note">
           ARES OKAYAMAを公式にサポートいただいているパートナー企業です。
         </p>
-        <div class="brand-cards-row">
-          <article class="brand-card">
-            <div class="brand-card-logo brand-card-logo--light">
-              <img src="sponsor-xenova.png" alt="XENOVA" />
-            </div>
-            <div class="brand-card-info">
-              <h3>XENOVA</h3>
-              <p>
-                ゲーミングPC・家具・インテリアを手がけるブランド。
-                「部屋の空間を壊さず引き立てる」をコンセプトに、国内製造のBTO PCを展開しています。
-              </p>
-              <div class="brand-card-actions">
-                <a href="https://xenova.shop" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><span>Shop</span><small>公式ストア</small></a>
-                <a href="https://x.com/XENOVA_official" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>X</span><small>公式X</small></a>
-              </div>
-            </div>
-          </article>
-          <article class="brand-card">
-            <div class="brand-card-logo">
-              <img src="apparel-logo.png" alt="FLD Apparel" />
-            </div>
-            <div class="brand-card-info">
-              <h3>FLD</h3>
-              <p>
-                ARES OKAYAMAが展開するアパレルブランド。
-                ゲームシーンとストリートカルチャーをつなぐ、日常で着られるチームウェアを提案します。
-              </p>
-              <div class="brand-card-actions">
-                <a href="https://fld.official.ec/" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><span>Shop</span><small>公式ストア</small></a>
-                <a href="https://x.com/FLD_apparel_JP" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>X</span><small>公式X</small></a>
-                <a href="https://www.tiktok.com/@fld.jp?_r=1&_t=ZS-96vNGMTcNsn" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>TikTok</span><small>公式TikTok</small></a>
-              </div>
-            </div>
-          </article>
+        <div class="brand-cards-row" data-sponsors="official"></div>
+        <div class="sponsors-actions">
+          <a href="sponsors.html" class="btn btn-ghost">
+            <span>View All Sponsors</span>
+            <small>スポンサー一覧を見る</small>
+          </a>
         </div>
       </div>
     </section>
@@ -471,24 +448,7 @@
         <p class="brand-section-note">
           ARES OKAYAMA所属メンバーが製品PR活動およびアフィリエイト活動を行っているゲーミングデバイスブランドです。
         </p>
-        <div class="brand-cards-row">
-          <article class="brand-card">
-            <div class="brand-card-logo">
-              <img src="wallhack-logo.png" alt="WALLHACK" />
-            </div>
-            <div class="brand-card-info">
-              <h3>WALLHACK</h3>
-              <p>
-                デンマーク発のゲーミングギアブランド。強化ガラスマウスパッドをはじめ、
-                精度と滑りを追求したプロダクトで競技シーンでも支持されています。
-              </p>
-              <div class="brand-card-actions">
-                <a href="https://wallhack.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><span>Shop</span><small>公式ストア</small></a>
-                <a href="https://x.com/WallhackHQ" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><span>X</span><small>公式X</small></a>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="brand-cards-row" data-sponsors="productSupport"></div>
       </div>
     </section>
 
@@ -560,6 +520,8 @@
 
   <script src="news.js"></script>
   <script src="followers.js"></script>
+  <script src="sponsors-data.js"></script>
+  <script src="sponsors.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
