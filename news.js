@@ -4,6 +4,17 @@
   /** @type {Array<{date: string, href: string, image: string, images?: string[], imageAlt: string, title: string, titleJa: string, description: string, banner?: boolean, featured?: boolean}>} */
   const newsItems = [
     {
+      date: "2026-06-25",
+      href: "https://x.com/aresokayama/status/2070071124252049791",
+      image: "news-hirado-sponsor.png",
+      imageAlt: "ARES OKAYAMA × 鮨 ひらど スポンサー提携",
+      title: "New Sponsor",
+      titleJa: "公式スポンサー「鮨 ひらど」提携",
+      description:
+        "ARES OKAYAMAは鮨 ひらど様とスポンサー提携を締結。岡山県倉敷市美観地区周辺にある完全予約制コースのお店です。",
+      banner: true,
+    },
+    {
       date: "2026-06-23",
       href: "https://x.com/aresokayama/status/2069376481290342478",
       image: "news-bastet-birthday.png",
