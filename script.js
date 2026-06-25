@@ -331,8 +331,37 @@
   }
 
   let tickerLogoTemplate = null;
+  let tickerResizeTimer = null;
 
-  function fillTickerTrack() {
+  function waitForImages(root) {
+    const images = root.querySelectorAll("img");
+    return Promise.all(
+      [...images].map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete) {
+              resolve();
+              return;
+            }
+            img.addEventListener("load", resolve, { once: true });
+            img.addEventListener("error", resolve, { once: true });
+          })
+      )
+    );
+  }
+
+  function applyTickerShift() {
+    const track = document.getElementById("tickerTrack");
+    if (!track?.firstElementChild) return;
+
+    const shift = track.firstElementChild.getBoundingClientRect().width;
+    track.style.setProperty("--ticker-shift", `${shift}px`);
+    track.style.animation = "none";
+    void track.offsetWidth;
+    track.style.animation = "";
+  }
+
+  async function fillTickerTrack() {
     const track = document.getElementById("tickerTrack");
     const seed = document.getElementById("tickerSeed");
     if (!track) return;
@@ -356,20 +385,21 @@
     }
 
     function createHalf() {
-      const half = document.createElement("div");
-      half.className = "ticker-set";
-
       const probe = document.createElement("div");
       probe.className = "ticker-set";
-      probe.setAttribute("aria-hidden", "true");
       probe.style.cssText =
         "position:fixed;left:-9999px;top:0;visibility:hidden;pointer-events:none";
       document.body.appendChild(probe);
 
-      while (probe.scrollWidth < window.innerWidth) {
+      const minWidth = window.innerWidth + 120;
+      let cycles = 0;
+      do {
         tickerLogoTemplate.forEach((logo) => probe.appendChild(createLogoNode(logo)));
-      }
+        cycles += 1;
+      } while (probe.scrollWidth < minWidth || cycles < 2);
 
+      const half = document.createElement("div");
+      half.className = "ticker-set";
       half.innerHTML = probe.innerHTML;
       probe.remove();
       return half;
@@ -385,31 +415,26 @@
     });
 
     track.replaceChildren(first, second);
-
-    void track.offsetWidth;
-    track.style.animation = "";
+    await waitForImages(track);
+    applyTickerShift();
   }
 
-  function initTicker() {
+  function scheduleTickerFill() {
+    clearTimeout(tickerResizeTimer);
+    tickerResizeTimer = setTimeout(() => {
+      void fillTickerTrack();
+    }, 150);
+  }
+
+  async function initTicker() {
     const seed = document.getElementById("tickerSeed");
     if (!seed) return;
 
-    const images = seed.querySelectorAll("img");
-    const waitForImages = [...images].map(
-      (img) =>
-        new Promise((resolve) => {
-          if (img.complete) {
-            resolve();
-            return;
-          }
-          img.addEventListener("load", resolve, { once: true });
-          img.addEventListener("error", resolve, { once: true });
-        })
-    );
-
-    Promise.all(waitForImages).then(fillTickerTrack);
+    await waitForImages(seed);
+    await fillTickerTrack();
+    window.requestAnimationFrame(applyTickerShift);
   }
 
   initTicker();
-  window.addEventListener("resize", fillTickerTrack, { passive: true });
+  window.addEventListener("resize", scheduleTickerFill, { passive: true });
 })();

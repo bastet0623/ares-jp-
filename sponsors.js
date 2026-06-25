@@ -7,12 +7,14 @@
   }
 
   function renderBrandCard(sponsor) {
-    const logoClass = sponsor.logoLight ? "brand-card-logo brand-card-logo--light" : "brand-card-logo";
+    const logoClasses = ["brand-card-logo"];
+    if (sponsor.logoLight) logoClasses.push("brand-card-logo--light");
+    if (sponsor.logoEmblem) logoClasses.push("brand-card-logo--emblem");
     const actions = (sponsor.links || []).map(renderLink).join("");
 
     return `
       <article class="brand-card" id="sponsor-${sponsor.id}">
-        <div class="${logoClass}">
+        <div class="${logoClasses.join(" ")}">
           <img src="${sponsor.logo}" alt="${sponsor.logoAlt || sponsor.name}" />
         </div>
         <div class="brand-card-info">

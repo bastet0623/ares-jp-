@@ -3,9 +3,10 @@ window.ARES_SPONSORS = {
     {
       id: "xenova",
       name: "XENOVA",
-      logo: "sponsor-xenova.png",
+      logo: "ticker-xenova.png",
       logoAlt: "XENOVA",
       logoLight: true,
+      logoEmblem: true,
       description:
         "ゲーミングPC・家具・インテリアを手がけるブランド。「部屋の空間を壊さず引き立てる」をコンセプトに、国内製造のBTO PCを展開しています。",
       links: [
@@ -16,14 +17,27 @@ window.ARES_SPONSORS = {
     {
       id: "fld",
       name: "FLD",
-      logo: "apparel-logo.png",
+      logo: "ticker-fld.png",
       logoAlt: "FLD Apparel",
+      logoEmblem: true,
       description:
         "ARES OKAYAMAが展開するアパレルブランド。ゲームシーンとストリートカルチャーをつなぐ、日常で着られるチームウェアを提案します。",
       links: [
         { label: "Shop", labelJa: "公式ストア", href: "https://fld.official.ec/", primary: true },
         { label: "X", labelJa: "公式X", href: "https://x.com/FLD_apparel_JP" },
         { label: "TikTok", labelJa: "公式TikTok", href: "https://www.tiktok.com/@fld.jp?_r=1&_t=ZS-96vNGMTcNsn" },
+      ],
+    },
+    {
+      id: "hirado",
+      name: "鮨 ひらど",
+      logo: "ticker-hirado.png",
+      logoAlt: "鮨 ひらど",
+      logoEmblem: true,
+      description:
+        "岡山県倉敷市にある完全予約制の寿司店。長崎県平戸市から直送される鮮魚を使い、職人の技が光るお寿司を提供しています。",
+      links: [
+        { label: "Website", labelJa: "公式サイト", href: "https://komaca.app/sushi-hirado/", primary: true },
       ],
     },
   ],

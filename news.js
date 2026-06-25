@@ -4,6 +4,17 @@
   /** @type {Array<{date: string, href: string, image: string, images?: string[], imageAlt: string, title: string, titleJa: string, description: string, banner?: boolean, featured?: boolean}>} */
   const newsItems = [
     {
+      date: "2026-06-23",
+      href: "https://x.com/aresokayama/status/2069376481290342478",
+      image: "news-bastet-birthday.png",
+      imageAlt: "ARES OKAYAMA representative bastet birthday visual",
+      title: "Happy Birthday",
+      titleJa: "代表「ばすてとぉ」誕生日",
+      description:
+        "本日6月23日は、ARES OKAYAMA代表 ばすてとぉ の誕生日。いつもチームを支え、挑戦を続ける代表にとって、素晴らしい1年になりますように。",
+      banner: true,
+    },
+    {
       date: "2026-06-18",
       href: "https://x.com/aresokayama/status/2067532849864183982",
       image: "news-shirashimo-welcome.png",

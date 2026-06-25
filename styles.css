@@ -939,7 +939,7 @@ body.loaded .loader {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: tickerScroll 24s linear infinite;
+  animation: tickerScroll var(--ticker-duration, 24s) linear infinite;
   will-change: transform;
 }
 
@@ -954,13 +954,17 @@ body.loaded .loader {
   flex-shrink: 0;
   height: clamp(36px, 5vw, 48px);
   width: auto;
-  margin: 0 40px;
+  margin: 0 clamp(2.75rem, 5.5vw, 3.75rem);
   object-fit: contain;
 }
 
 .ticker-set img.ticker-logo--xenova,
 .ticker-set img.ticker-logo--fld {
   height: clamp(56px, 8.5vw, 72px);
+}
+
+.ticker-set img.ticker-logo--hirado {
+  height: clamp(64px, 10vw, 84px);
 }
 
 .ticker-set img.ticker-logo--xenova {
@@ -973,7 +977,7 @@ body.loaded .loader {
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-1 * var(--ticker-shift, 50%)));
   }
 }
 
@@ -2234,6 +2238,48 @@ a.member-profile-x:hover {
   gap: 2rem;
 }
 
+#sponsors .brand-cards-row,
+#official-sponsors .brand-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+#sponsors .brand-card,
+#official-sponsors .brand-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#sponsors .brand-card-info,
+#official-sponsors .brand-card-info {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+#sponsors .brand-card-info p,
+#official-sponsors .brand-card-info p {
+  flex: 1;
+}
+
+#sponsors .brand-card-actions,
+#official-sponsors .brand-card-actions {
+  margin-top: auto;
+  width: 100%;
+}
+
+#sponsors .brand-card:last-child:nth-child(odd),
+#official-sponsors .brand-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  width: min(100%, calc(50% - 1rem));
+  justify-self: center;
+}
+
 .brand-card {
   display: grid;
   grid-template-columns: minmax(220px, 280px) 1fr;
@@ -2262,13 +2308,34 @@ a.member-profile-x:hover {
   background: #fff;
 }
 
+.brand-card-logo--emblem {
+  min-height: 180px;
+  padding: 1.25rem;
+}
+
+.brand-card-logo--emblem:not(.brand-card-logo--light) {
+  background: #000;
+  border: 1px solid rgba(254, 214, 28, 0.18);
+}
+
+.brand-card-logo--emblem img {
+  width: min(100%, 320px);
+  max-height: clamp(96px, 16vw, 128px);
+  max-width: none;
+  filter: drop-shadow(0 0 20px var(--accent-dim));
+}
+
+.brand-card-logo--light.brand-card-logo--emblem img {
+  filter: none;
+}
+
 .brand-card-logo img {
   width: min(100%, 240px);
   max-height: 72px;
   object-fit: contain;
 }
 
-.brand-card-logo:not(.brand-card-logo--light) img {
+.brand-card-logo:not(.brand-card-logo--light):not(.brand-card-logo--emblem) img {
   filter: drop-shadow(0 0 16px var(--accent-dim));
 }
 
@@ -2652,6 +2719,17 @@ body.contact-success-open {
     text-align: center;
   }
 
+  #sponsors .brand-cards-row,
+  #official-sponsors .brand-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #sponsors .brand-card:last-child:nth-child(odd),
+  #official-sponsors .brand-card:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+  }
+
   .brand-card-actions {
     grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
   }
@@ -2890,12 +2968,16 @@ body.contact-success-open {
 
   .ticker-set img {
     height: clamp(32px, 8vw, 40px);
-    margin: 0 28px;
+    margin: 0 2.25rem;
   }
 
   .ticker-set img.ticker-logo--xenova,
   .ticker-set img.ticker-logo--fld {
     height: clamp(48px, 12vw, 60px);
+  }
+
+  .ticker-set img.ticker-logo--hirado {
+    height: clamp(52px, 14vw, 68px);
   }
 
   .video-showcase {
