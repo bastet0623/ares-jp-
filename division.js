@@ -140,7 +140,13 @@
       subtitle: "運営",
       desc: "大会対応、企画進行、選手・配信者の活動を支える運営部門です。",
       members: [
-        { icon: "O", name: "Coming Soon", role: "Operations", bio: "運営メンバーのプロフィールは近日公開予定です。" },
+        {
+          icon: "L",
+          image: "operations-l1nxs.png",
+          name: "L1NXs",
+          role: "Operations",
+          bio: "ARES OKAYAMA運営メンバー。大会対応、企画進行、選手・配信者の活動をサポートします。",
+        },
       ],
     },
   };
