@@ -140,14 +140,7 @@
       subtitle: "運営",
       desc: "大会対応、企画進行、選手・配信者の活動を支える運営部門です。",
       members: [
-        {
-          icon: "H",
-          image: "operations-heido.png",
-          name: "へいど",
-          role: "Operations",
-          bio: "元々Fortniteの選手で活動していましたが現在は、裏で選手を支える運営として活動しております。色んな事に挑戦したいです。よろしくお願いします。",
-          x: "https://x.com/heid_1202",
-        },
+        { icon: "O", name: "Coming Soon", role: "Operations", bio: "運営メンバーのプロフィールは近日公開予定です。" },
       ],
     },
   };
