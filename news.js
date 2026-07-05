@@ -4,6 +4,28 @@
   /** @type {Array<{date: string, href: string, image: string, images?: string[], imageAlt: string, title: string, titleJa: string, description: string, banner?: boolean, featured?: boolean}>} */
   const newsItems = [
     {
+      date: "2026-07-05",
+      href: "https://x.com/aresokayama/status/2073708474236870935",
+      image: "news-iba-welcome.png",
+      imageAlt: "ストリーマー iba WELCOME ARES",
+      title: "New Streamer",
+      titleJa: "ストリーマー「iba」加入",
+      description:
+        "ARES OKAYAMAストリーマーに iba さんが加入。これからもARES OKAYAMAの応援よろしくお願いします。",
+      banner: true,
+    },
+    {
+      date: "2026-06-29",
+      href: "https://x.com/aresokayama/status/2071534169000419648",
+      image: "news-l1nxs-welcome.png",
+      imageAlt: "運営 L1NXs WELCOME ARES OKAYAMA",
+      title: "New Operations",
+      titleJa: "運営「L1NXs」加入",
+      description:
+        "ARES OKAYAMA運営に L1NXs さんが加入。これからもARES OKAYAMAの応援よろしくお願いします。",
+      banner: true,
+    },
+    {
       date: "2026-06-25",
       href: "https://x.com/aresokayama/status/2070071124252049791",
       image: "news-hirado-sponsor.png",

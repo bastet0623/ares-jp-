@@ -3,16 +3,66 @@
   const navToggle = document.getElementById("navToggle");
   const navLinks = document.getElementById("navLinks");
   const cursorTube = document.getElementById("cursorTube");
+  const introVideo = document.getElementById("introVideo");
+  const introVideoPlayer = document.getElementById("introVideoPlayer");
+  const introVideoSkip = document.getElementById("introVideoSkip");
+  let pageMarkedLoaded = false;
 
-  // Page is visible immediately; no opening loader is used.
   function markLoaded() {
+    if (pageMarkedLoaded) return;
+    pageMarkedLoaded = true;
     document.body.classList.add("loaded");
   }
 
-  if (document.readyState === "complete") {
+  function finishIntroVideo() {
+    if (!introVideo) {
+      markLoaded();
+      return;
+    }
+
+    introVideo.classList.add("intro-video--done");
+    introVideo.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("intro-active");
+
+    if (introVideoPlayer) {
+      introVideoPlayer.pause();
+    }
+
     markLoaded();
+
+    window.setTimeout(() => {
+      introVideo.remove();
+    }, 700);
+  }
+
+  function initIntroVideo() {
+    if (!introVideo || !introVideoPlayer) {
+      markLoaded();
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      finishIntroVideo();
+      return;
+    }
+
+    document.body.classList.add("intro-active");
+    introVideoSkip?.addEventListener("click", finishIntroVideo);
+    introVideoPlayer.addEventListener("ended", finishIntroVideo);
+
+    const playPromise = introVideoPlayer.play();
+    if (playPromise) {
+      playPromise.catch(() => {
+        introVideoPlayer.muted = true;
+        introVideoPlayer.play().catch(finishIntroVideo);
+      });
+    }
+  }
+
+  if (document.readyState === "complete") {
+    initIntroVideo();
   } else {
-    window.addEventListener("load", markLoaded);
+    window.addEventListener("load", initIntroVideo);
   }
 
   // Header scroll state
