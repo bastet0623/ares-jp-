@@ -102,6 +102,7 @@
           name: "白霜 優萊",
           role: "Streamer",
           x: "https://x.com/EtNty_SeRapH",
+          youtube: "https://www.youtube.com/channel/UCuor7SEbUMR31G6FRIq3j1w/join",
           bio:
             "FPSゲームを中心に活動しているストリーマーです。<br><br>主にApex Legendsの参加型配信やFPS関連コンテンツを配信しており、視聴者の皆様と一緒に楽しめる配信を心掛けています。<br><br>過去にはAVA（Alliance of Valiant Arms）公式大会「ODL 爆破リーグ王座決定戦 ビギナーリーグ」にて優勝経験があります。<br><br>現在はゲーム配信だけでなく、雑談配信や回胴式遊技機を使用した配信など幅広く活動中です。<br><br>ARES OKAYAMAの一員として、チームの魅力を発信しながら多くの方に楽しんでいただけるコンテンツ作りに取り組んでまいります。",
         },
@@ -113,6 +114,7 @@
           bio:
             "普段はFPSゲーム（Apex Legends）を中心に配信活動をしています。<br><br>生まれたてで目立った実績はまだありませんが、視聴者のみなさんと一緒に、とにかく楽しく交流しながら配信をお届けすることを一番大切にしています！<br><br>今後はFPSに限らず、様々なジャンルのゲームや企画を通して、ARES OKAYAMAの魅力をたくさんの方に伝えられるように全力で頑張ります！！<br><br>これから一歩ずつ成長していきますので、ぜひ温かく見守っていただけると嬉しいです。応援よろしくお願いします！",
           x: "https://x.com/Lynfield15",
+          twitch: "https://t.co/kM4FqOVTyn",
         },
       ],
     },
@@ -184,33 +186,139 @@
     return `<div class="member-profile-icon">${member.icon}</div>`;
   }
 
-  function renderMemberCard(member) {
-    const isProfileLink = Boolean(member.x);
-    const tag = isProfileLink ? "a" : "article";
-    const idAttr = member.id ? ` id="${member.id}"` : "";
-    const attrs = isProfileLink
-      ? `class="member-profile-card member-profile-card--link" href="${member.x}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のXプロフィールを開く"`
-      : `class="member-profile-card"${idAttr}`;
-
-    const actionMarkup = isProfileLink
-      ? '<span class="member-profile-x">View on X<small>Xで見る</small></span>'
-      : member.tweet
+  function renderMemberActions(member) {
+    const links = [
+      member.x
+        ? `<a class="member-profile-x" href="${member.x}" target="_blank" rel="noopener noreferrer">View on X<small>Xで見る</small></a>`
+        : "",
+      member.twitch
+        ? `<a class="member-profile-x member-profile-x--twitch" href="${member.twitch}" target="_blank" rel="noopener noreferrer">Twitch<small>Twitchで見る</small></a>`
+        : "",
+      member.youtube
+        ? `<a class="member-profile-x member-profile-x--youtube" href="${member.youtube}" target="_blank" rel="noopener noreferrer">YouTube<small>YouTubeで見る</small></a>`
+        : "",
+      member.tweet
         ? `<a class="member-profile-x" href="${member.tweet}" target="_blank" rel="noopener noreferrer">View Tweet<small>告知ツイートを見る</small></a>`
-        : "";
+        : "",
+    ].filter(Boolean);
+
+    if (!links.length) return "";
+    return `<div class="member-profile-actions">${links.join("")}</div>`;
+  }
+
+  function renderMemberCard(member) {
+    const idAttr = member.id ? ` id="${member.id}"` : "";
+    const actionMarkup = renderMemberActions(member);
 
     return `
-      <${tag} ${attrs}>
+      <article class="member-profile-card member-profile-card--featured"${idAttr}>
         ${renderMemberIcon(member)}
         <div class="member-profile-body">
           <span class="member-profile-role">${member.role}</span>
           <h3>${member.name}</h3>
-          <p>${member.bio}</p>
+          <div class="member-profile-bio">${member.bio}</div>
           ${actionMarkup}
         </div>
-      </${tag}>
+      </article>
     `;
   }
 
-  const grid = document.getElementById("memberProfileGrid");
-  grid.innerHTML = division.members.map(renderMemberCard).join("");
+  const members = division.members;
+  const showcase = document.getElementById("memberProfileShowcase");
+  const nav = document.getElementById("memberProfileNav");
+  const stage = document.getElementById("memberProfileStage");
+  const counter = document.getElementById("memberProfileCounter");
+  const prevBtn = document.getElementById("memberProfilePrev");
+  const nextBtn = document.getElementById("memberProfileNext");
+
+  if (!members.length) {
+    showcase.innerHTML = '<p class="member-profile-empty">メンバー情報は近日公開予定です。</p>';
+    return;
+  }
+
+  let activeIndex = 0;
+  const memberParam = params.get("member");
+  if (memberParam) {
+    const memberIndex = members.findIndex((member) => member.id === memberParam || member.name === memberParam);
+    if (memberIndex >= 0) activeIndex = memberIndex;
+  }
+
+  function updateShowcase() {
+    const member = members[activeIndex];
+    stage.innerHTML = renderMemberCard(member);
+
+    nav.querySelectorAll(".member-profile-tab").forEach((tab, index) => {
+      const isActive = index === activeIndex;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      tab.tabIndex = isActive ? 0 : -1;
+    });
+
+    if (members.length > 1) {
+      counter.textContent = `${activeIndex + 1} / ${members.length}`;
+      counter.removeAttribute("aria-hidden");
+      prevBtn.disabled = activeIndex === 0;
+      nextBtn.disabled = activeIndex === members.length - 1;
+    }
+  }
+
+  if (members.length === 1) {
+    showcase.classList.add("member-profile-showcase--single");
+    nav.hidden = true;
+    prevBtn.hidden = true;
+    nextBtn.hidden = true;
+    counter.hidden = true;
+    stage.innerHTML = renderMemberCard(members[0]);
+    return;
+  }
+
+  nav.innerHTML = members
+    .map(
+      (member, index) => `
+        <button
+          type="button"
+          class="member-profile-tab${index === activeIndex ? " is-active" : ""}"
+          role="tab"
+          aria-selected="${index === activeIndex ? "true" : "false"}"
+          aria-controls="memberProfileStage"
+          data-index="${index}"
+          tabindex="${index === activeIndex ? "0" : "-1"}"
+        >${member.name}</button>
+      `
+    )
+    .join("");
+
+  nav.addEventListener("click", (event) => {
+    const tab = event.target.closest(".member-profile-tab");
+    if (!tab) return;
+    activeIndex = Number(tab.dataset.index);
+    updateShowcase();
+  });
+
+  nav.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    if (event.key === "ArrowLeft") activeIndex = Math.max(0, activeIndex - 1);
+    if (event.key === "ArrowRight") activeIndex = Math.min(members.length - 1, activeIndex + 1);
+    if (event.key === "Home") activeIndex = 0;
+    if (event.key === "End") activeIndex = members.length - 1;
+    updateShowcase();
+    nav.querySelectorAll(".member-profile-tab")[activeIndex]?.focus();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (activeIndex > 0) {
+      activeIndex -= 1;
+      updateShowcase();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (activeIndex < members.length - 1) {
+      activeIndex += 1;
+      updateShowcase();
+    }
+  });
+
+  updateShowcase();
 })();

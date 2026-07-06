@@ -59,7 +59,19 @@
           <span class="section-label">Member Profile<small>メンバー紹介</small></span>
           <h2 class="section-title" id="memberSectionTitle">Members<small>所属メンバー</small></h2>
         </div>
-        <div class="member-profile-grid" id="memberProfileGrid"></div>
+        <div class="member-profile-showcase" id="memberProfileShowcase">
+          <div class="member-profile-nav" id="memberProfileNav" role="tablist" aria-label="メンバー選択"></div>
+          <div class="member-profile-viewport">
+            <button type="button" class="member-profile-arrow member-profile-arrow--prev" id="memberProfilePrev" aria-label="前のメンバー">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="member-profile-stage" id="memberProfileStage" role="tabpanel" aria-live="polite"></div>
+            <button type="button" class="member-profile-arrow member-profile-arrow--next" id="memberProfileNext" aria-label="次のメンバー">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+          <p class="member-profile-counter" id="memberProfileCounter" aria-hidden="true"></p>
+        </div>
       </div>
     </section>
   </main>
