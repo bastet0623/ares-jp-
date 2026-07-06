@@ -1,4 +1,5 @@
 (function () {
+  const INITIAL_VISIBLE = 3;
   const events = [...(window.ARES_EVENTS || [])].sort((a, b) => b.date.localeCompare(a.date));
 
   function renderEventCard(event) {
@@ -19,10 +20,18 @@
     `;
   }
 
-  const grid = document.getElementById("eventListGrid");
-  if (!grid) return;
+  const homeGrid = document.getElementById("eventHomeGrid");
+  const listGrid = document.getElementById("eventListGrid");
 
-  grid.innerHTML = events.map(renderEventCard).join("");
+  if (homeGrid) {
+    homeGrid.innerHTML = events.slice(0, INITIAL_VISIBLE).map(renderEventCard).join("");
+    window.dispatchEvent(new CustomEvent("ares:events-updated"));
+    return;
+  }
+
+  if (!listGrid) return;
+
+  listGrid.innerHTML = events.map(renderEventCard).join("");
 
   const hash = window.location.hash;
   if (!hash) return;

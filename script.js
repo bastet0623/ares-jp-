@@ -169,6 +169,15 @@
     bindRevealElements(cards);
   });
 
+  window.addEventListener("ares:events-updated", () => {
+    const cards = document.querySelectorAll("#eventHomeGrid .member-profile-card");
+    cards.forEach((card) => {
+      revealObserver.unobserve(card);
+      card.classList.remove("reveal", "visible");
+    });
+    bindRevealElements(cards);
+  });
+
   function updateCardGlow(card, event) {
     const rect = card.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
