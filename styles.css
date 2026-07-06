@@ -1151,6 +1151,9 @@ body.intro-active {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
+  line-height: 1.2;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .section-title small {
@@ -1384,7 +1387,7 @@ body.intro-active {
 
 .divisions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.25rem;
 }
 
@@ -1400,6 +1403,10 @@ body.intro-active {
 
 .division-card {
   cursor: pointer;
+}
+
+.division-card .player-info {
+  padding-right: 2.75rem;
 }
 
 .division-card::after {
@@ -1489,9 +1496,12 @@ body.intro-active {
 
 .player-info h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: 0.05em;
+  font-size: clamp(0.88rem, 2.2vw, 1rem);
+  line-height: 1.25;
+  letter-spacing: 0.03em;
   margin-bottom: 0.25rem;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .player-info h3 small,
@@ -1663,11 +1673,13 @@ body.intro-active {
 .division-page-title {
   max-width: 980px;
   font-family: var(--font-display);
-  font-size: clamp(3.6rem, 12vw, 8.5rem);
+  font-size: clamp(2.6rem, 9vw, 7rem);
   font-weight: 900;
-  line-height: 0.92;
-  letter-spacing: -0.06em;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   color: var(--accent);
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .division-page-desc {
@@ -1889,6 +1901,7 @@ body.intro-active {
 .member-profile-card--featured {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-items: center;
   gap: 1.75rem;
   height: auto;

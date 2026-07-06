@@ -68,6 +68,7 @@
         },
         {
           icon: "R",
+          image: "creator-riruto.png",
           name: "りると",
           role: "Creator",
           bio: "ARES OKAYAMA所属クリエイター。動画編集やクリエイティブ制作を担当します。",
