@@ -49,6 +49,20 @@
     document.body.classList.add("intro-active");
     introVideoSkip?.addEventListener("click", finishIntroVideo);
     introVideoPlayer.addEventListener("ended", finishIntroVideo);
+    introVideoPlayer.addEventListener("error", finishIntroVideo);
+
+    const introFallbackTimer = window.setTimeout(() => {
+      if (introVideoPlayer.readyState < 2) {
+        finishIntroVideo();
+      }
+    }, 4000);
+
+    const clearIntroFallbackTimer = () => {
+      window.clearTimeout(introFallbackTimer);
+    };
+
+    introVideoPlayer.addEventListener("playing", clearIntroFallbackTimer, { once: true });
+    introVideoPlayer.addEventListener("error", clearIntroFallbackTimer);
 
     const playPromise = introVideoPlayer.play();
     if (playPromise) {
