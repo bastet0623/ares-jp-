@@ -1041,6 +1041,10 @@ body.intro-active {
   height: clamp(64px, 10vw, 84px);
 }
 
+.ticker-set img.ticker-logo--ggm {
+  height: clamp(56px, 8.5vw, 72px);
+}
+
 .ticker-set img.ticker-logo--xenova {
   filter: brightness(0) invert(1);
 }
@@ -2646,6 +2650,7 @@ a.member-profile-x:hover {
 
 /* Sponsors & Product Support */
 .sponsors,
+.support-orgs,
 .member-brands {
   padding: 4rem 0;
   background: rgba(11, 11, 9, 0.55);
@@ -2661,6 +2666,18 @@ a.member-profile-x:hover {
   line-height: 1.7;
 }
 
+.brand-empty-note {
+  width: 100%;
+  margin: 0;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px dashed rgba(254, 214, 28, 0.28);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+
 .brand-cards-row {
   display: flex;
   flex-direction: column;
@@ -2669,7 +2686,11 @@ a.member-profile-x:hover {
 }
 
 #sponsors .brand-cards-row,
-#official-sponsors .brand-cards-grid {
+#official-sponsors .brand-cards-grid,
+#support-orgs .brand-cards-row,
+#support-organizations .brand-cards-grid,
+#member-brands .brand-cards-row,
+#product-support .brand-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
@@ -2678,7 +2699,11 @@ a.member-profile-x:hover {
 }
 
 #sponsors .brand-card,
-#official-sponsors .brand-card {
+#official-sponsors .brand-card,
+#support-orgs .brand-card,
+#support-organizations .brand-card,
+#member-brands .brand-card,
+#product-support .brand-card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -2687,27 +2712,48 @@ a.member-profile-x:hover {
 }
 
 #sponsors .brand-card-info,
-#official-sponsors .brand-card-info {
+#official-sponsors .brand-card-info,
+#support-orgs .brand-card-info,
+#support-organizations .brand-card-info,
+#member-brands .brand-card-info,
+#product-support .brand-card-info {
   flex: 1;
   justify-content: flex-start;
 }
 
 #sponsors .brand-card-info p,
-#official-sponsors .brand-card-info p {
+#official-sponsors .brand-card-info p,
+#support-orgs .brand-card-info p,
+#support-organizations .brand-card-info p,
+#member-brands .brand-card-info p,
+#product-support .brand-card-info p {
   flex: 1;
 }
 
 #sponsors .brand-card-actions,
-#official-sponsors .brand-card-actions {
+#official-sponsors .brand-card-actions,
+#support-orgs .brand-card-actions,
+#support-organizations .brand-card-actions,
+#member-brands .brand-card-actions,
+#product-support .brand-card-actions {
   margin-top: auto;
   width: 100%;
 }
 
 #sponsors .brand-card:last-child:nth-child(odd),
-#official-sponsors .brand-card:last-child:nth-child(odd) {
+#official-sponsors .brand-card:last-child:nth-child(odd),
+#support-orgs .brand-card:last-child:nth-child(odd),
+#support-organizations .brand-card:last-child:nth-child(odd),
+#member-brands .brand-card:last-child:nth-child(odd),
+#product-support .brand-card:last-child:nth-child(odd) {
   grid-column: 1 / -1;
   width: min(100%, calc(50% - 1rem));
   justify-self: center;
+}
+
+#support-orgs .brand-cards-row:has(.brand-empty-note),
+#support-organizations .brand-cards-grid:has(.brand-empty-note) {
+  grid-template-columns: 1fr;
 }
 
 .brand-card {
@@ -2736,6 +2782,19 @@ a.member-profile-x:hover {
 
 .brand-card-logo--light {
   background: #fff;
+}
+
+.brand-card-logo--text {
+  background: rgba(254, 214, 28, 0.06);
+}
+
+.brand-card-logo-text {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  text-shadow: 0 0 24px var(--accent-dim);
 }
 
 .brand-card-logo--emblem {
@@ -3162,12 +3221,20 @@ body.contact-success-open {
   }
 
   #sponsors .brand-cards-row,
-  #official-sponsors .brand-cards-grid {
+  #official-sponsors .brand-cards-grid,
+  #support-orgs .brand-cards-row,
+  #support-organizations .brand-cards-grid,
+  #member-brands .brand-cards-row,
+  #product-support .brand-cards-grid {
     grid-template-columns: 1fr;
   }
 
   #sponsors .brand-card:last-child:nth-child(odd),
-  #official-sponsors .brand-card:last-child:nth-child(odd) {
+  #official-sponsors .brand-card:last-child:nth-child(odd),
+  #support-orgs .brand-card:last-child:nth-child(odd),
+  #support-organizations .brand-card:last-child:nth-child(odd),
+  #member-brands .brand-card:last-child:nth-child(odd),
+  #product-support .brand-card:last-child:nth-child(odd) {
     grid-column: auto;
     width: 100%;
   }
@@ -3420,6 +3487,10 @@ body.contact-success-open {
 
   .ticker-set img.ticker-logo--hirado {
     height: clamp(52px, 14vw, 68px);
+  }
+
+  .ticker-set img.ticker-logo--ggm {
+    height: clamp(48px, 12vw, 60px);
   }
 
   .video-showcase {
