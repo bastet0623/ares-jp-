@@ -4,6 +4,17 @@
   /** @type {Array<{date: string, href: string, image: string, images?: string[], imageAlt: string, title: string, titleJa: string, description: string, banner?: boolean, featured?: boolean}>} */
   const newsItems = [
     {
+      date: "2026-07-14",
+      href: "https://x.com/aresokayama/status/2076954913805136147",
+      image: "news-ggm-sponsor.png",
+      imageAlt: "ARES OKAYAMA × Gamers Group Mie スポンサー契約締結",
+      title: "New Sponsor",
+      titleJa: "Gamers Group Mie とスポンサー契約締結",
+      description:
+        "ARES OKAYAMAは Gamers Group Mie 様とスポンサー契約を締結。「岡山から世界へ」を掲げ、eスポーツを通じた地域活性化や選手・クリエイターの活躍の場の拡大に向け、引き続き連携してまいります。",
+      banner: true,
+    },
+    {
       date: "2026-07-05",
       href: "https://x.com/aresokayama/status/2073708474236870935",
       image: "news-iba-welcome.png",
