@@ -49,7 +49,7 @@ window.ARES_SPONSORS = {
       logoAlt: "Gamers Group Mie",
       logoLight: true,
       description:
-        "Gamers Group Mie（GGM）は、「チームと企業を繋ぐ架け橋」をコンセプトに活動するeスポーツ支援団体です。eスポーツチームやコミュニティ、大会運営と企業をつなぎ、スポンサー・協力体制の構築を通じて、eスポーツシーンの発展に取り組んでいます。<br><br>ARES OKAYAMAは、Gamers Group Mieとサポート団体契約を締結し、今後も地域からeスポーツの発展とコミュニティの活性化に向けて連携してまいります。",
+        "Gamers Group Mie（GGM）は、「チームと企業を繋ぐ架け橋」をコンセプトに活動するeスポーツ支援ボランティア団体です。eスポーツチームやコミュニティ、大会運営と企業をつなぎ、スポンサー・協力体制の構築を通じて、eスポーツシーンの発展に取り組んでいます。<br><br>ARES OKAYAMAは、Gamers Group Mieとサポート団体契約を締結し、今後も地域からeスポーツの発展とコミュニティの活性化に向けて連携してまいります。",
       links: [
         { label: "Website", labelJa: "公式サイト", href: "https://gamersgroup2021.wordpress.com", primary: true },
         { label: "X", labelJa: "公式X", href: "https://x.com/GamersGroupMie" },
